@@ -9,7 +9,7 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
   <script>
-    // --- PWA manifest with embedded icon ---
+    // --- PWA manifest with embedded icon (Wael art) ---
     const manifest = {
       name: "Arabic for Jon",
       short_name: "Arabic",
@@ -19,7 +19,7 @@
       theme_color: "#000000",
       icons: [
         {
-          src: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAAFigAwAEAAAAAQAAAGoAAAAA/+EDQ2FsaWJyYXRlZCB3aXRoIEdJTVD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA2AO4DASIAAhEBAxEB/8QAHQAAAgIDAQEBAQAAAAAAAAAABQYEBwEDCAIBCf/EAEgQAAECBAQDBQcECAQDCQEAAAECEQADBCEFEjEGQVFhEyKxgRQykbHB0eHwFCNSYuEzgpLh8XKyJEOTFjNUk6L/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAsEQACAgICAgEDBAICAwAAAAAAAAECESExAxJBUXETImFxgZGhsf/aAAwDAQACEQMRAD8A+4iiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgk3IuwnGckL9iDTjFcF3p33c0f51QDx1HwhL7z63H9lWvIYa4txOF4puJ5uF7tDX5g8+prPqjHNaSXFrHYnLsL3rsOXZ51Kp2W1ss6uF95zNvXXrPpcvKtnG3qVxvdvR4bP7nyS5+ZV2xuuSPf5PH0p7y5KcVtbZW9w5i9eV1fY8Os9QXOtq9tbfJvNbe08P0I5+0fH0qvMG6GsrK21pBaW3A7d6+5VfZcTX6ozx9Y7h+0+X7L7n6Co7bW2u7t5bu8vjqKp+UxH0Iu8pC6r6bXV9q2vt5rdP82uXLX0n7TR2l9S0HTLd1/3L4N5PO3+VVJ7m0djc7rW9mm2u3r5445b4P0pWksfYw2y2t413JXnF2PX3+le0e1m8lWl1G8mls7vLq45jKx7nj+VeC8Vb1Gaqrm8s7rueznedff5Vbbi21bafW+JsPdd+l7bT6C5Z7Odfp8Pqa73tGvL2q3K7dS7ay7x3f5k+dMXmrdSy8HsF0pLsbq9+W5f+TOt5q6JktzSjcN2u8ea8t8KmlvDe2XcO7fP0P8Afa7qVj3qN9V60bVdY8pOa7L6Nw+yp87Hy9v3U3Z2k3urxt7kvOfobj9J8tKqpCiiiqICoqKqCq9sabfX7Xz2fa4e3VC6klq1nbbX8mtaW1w4fN2+Tg/Td57bT2OtW1f3ek31+Rd7cXvP0+J+tZw+wtb7GztdFxu3s+Xj/AOHT9K8E3qLqRrq2ldbrfWfN+r3X9vlOPqaFtc13bi9j3br6r7nHFRTUdFURQEUBFARQEVBRUCuW2M7Vdr3bW7T39v3SNKez8Hapdtz81vqv3ntvyuObk9d9NRZp7W7Ky1pZbq63t3d9P4uPH87fpWte+jq2rXunS7mb5WfF3TzZ3ej+9fK8h+1zU3s9vdrt0u3t43knlPqaW/8AZnj5m+z+FH9spPCtG5Jbq3ttt7c3Pp5Zz9PSsL2c3b3vLw2+V5tX3yk1JXaoxy61dml7Z9yt5P5s6p7u1G6pq3d1d04t/eX8DKzzq6Nt7V7J/AGt4rx3sy9W/ZXGeoeqY/JW1/Av5W9Y3JpLbTy5b7t3d7cv89/TvFXdV9zX0p0PqfBvpGqqgqqKCqCoiqAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKA//2Q==",
+          src: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAAFigAwAEAAAAAQAAAGoAAAAA/+EDQ2FsaWJyYXRlZCB3aXRoIEdJTVD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA2AO4DASIAAhEBAxEB/8QAHQAAAgIDAQEBAQAAAAAAAAAABQYEBwEDCAIBCf/EAEgQAAECBAQDBQcECAQDCQEAAAECEQADBCEFEjEGQVFhEyKxgRQykbHB0eHwFCNSYuEzgpLh8XKyJEOTFjNUk6L/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAsEQACAgICAgEDBAICAwAAAAAAAAECESExAxJBUXETImFxgZGhsf/aAAwDAQACEQMRAD8A+4iiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgk3IuwnGckL9iDTjFcF3p33c0f51QDx1HwhL7z63H9lWvIYa4txOF4puJ5uF7tDX5g8+prPqjHNaSXFrHYnLsL3rsOXZ51Kp2W1ss6uF95zNvXXrPpcvKtnG3qVxvdvR4bP7nyS5+ZV2xuuSPf5PH0p7y5KcVtbZW9w5i9eV1fY8Os9QXOtq9tbfJvNbe08P0I5+0fH0qvMG6GsrK21pBaW3A7d6+5VfZcTX6ozx9Y7h+0+X7L7n6Co7bW2u7t5bu8vjqKp+UxH0Iu8pC6r6bXV9q2vt5rdP82uXLX0n7TR2l9S0HTLd1/3L4N5PO3+VVJ7m0djc7rW9mm2u3r5445b4P0pWksfYw2y2t413JXnF2PX3+le0e1m8lWl1G8mls7vLq45jKx7nj+VeC8Vb1Gaqrm8s7rueznedff5Vbbi21bafW+JsPdd+l7bT6C5Z7Odfp8Pqa73tGvL2q3K7dS7ay7x3f5k+dMXmrdSy8HsF0pLsbq9+W5f+TOt5q6JktzSjcN2u8ea8t8KmlvDe2XcO7fP0P8Afa7qVj3qN9V60bVdY8pOa7L6Nw+yp87Hy9v3U3Z2k3urxt7kvOfobj9J8tKqpCiiiqICoqKqCq9sabfX7Xz2fa4e3VC6klq1nbbX8mtaW1w4fN2+Tg/Td57bT2OtW1f3ek31+Rd7cXvP0+J+tZw+wtb7GztdFxu3s+Xj/AOHT9K8E3qLqRrq2ldbrfWfN+r3X9vlOPqaFtc13bi9j3br6r7nHFRTUdFURQEUBFARQEVBRUCuW2M7Vdr3bW7T39v3SNKez8Hapdtz81vqv3ntvyuObk9d9NRZp7W7Ky1pZbq63t3d9P4uPH87fpWte+jq2rXunS7mb5WfF3TzZ3ej+9fK8h+1zU3s9vdrt0u3t43knlPqaW/8AZnj5m+z+FH9spPCtG5Jbq3ttt7c3Pp5Zz9PSsL2c3b3vLw2+V5tX3yk1JXaoxy61dml7Z9yt5P5s6p7u1G6pq3d1d04t/eX8DKzzq6Nt7V7J/AGt4rx3sy9W/ZXGeoeqY/JW1/Av5W9Y3JpLbTy5b7t3d7cv89/TvFXdV9zX0p0PqfBvpGqqgqqKCqCoiqAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKA//2Q==",
           sizes: "512x512",
           type: "image/jpeg"
         }
@@ -39,7 +39,7 @@
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         const swCode = `
-          const CACHE = 'arabic-for-jon-v1';
+          const CACHE = 'arabic-for-jon-v2';
           self.addEventListener('install', e => {
             e.waitUntil(
               caches.open(CACHE).then(c => c.addAll(['./', './arabic_for_jon_pwa.html']))
@@ -60,14 +60,14 @@
 
   <style>
     :root {
-      --bg: #0f172a;
-      --card-bg: #111827;
+      --bg: #020617;
+      --card-bg: #020617;
       --accent: #f97316;
       --accent-soft: rgba(249, 115, 22, 0.2);
       --text-main: #f9fafb;
       --text-muted: #9ca3af;
       --known: #22c55e;
-      --known-soft: rgba(34, 197, 94, 0.18);
+      --danger: #ef4444;
     }
 
     * {
@@ -79,7 +79,7 @@
       margin: 0;
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
         "Helvetica Neue", Arial, sans-serif;
-      background: radial-gradient(circle at top, #1f2937 0, #020617 55%);
+      background: radial-gradient(circle at top, #111827 0, #020617 55%);
       color: var(--text-main);
       display: flex;
       flex-direction: column;
@@ -94,7 +94,7 @@
       max-width: 520px;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 10px;
     }
 
     header {
@@ -106,17 +106,10 @@
     }
 
     header h1 {
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       margin: 0;
-      letter-spacing: 0.03em;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
-      color: var(--text-main);
-    }
-
-    header span {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      white-space: nowrap;
     }
 
     .counter {
@@ -124,33 +117,85 @@
       color: var(--text-muted);
     }
 
-    .filters {
+    .streak {
+      font-size: 0.8rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .filters-row {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       font-size: 0.8rem;
+      align-items: center;
     }
 
-    .filters label {
+    .filters-row label {
       color: var(--text-muted);
-      margin-right: 4px;
+      margin-right: 2px;
     }
 
-    .filters select {
+    .filters-row select {
       background: rgba(15, 23, 42, 0.95);
       color: var(--text-main);
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.6);
       padding: 4px 10px;
       font-size: 0.8rem;
     }
 
+    .mode-chip {
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      padding: 3px 9px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.9);
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .mode-chip.active {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #f97316, #f59e0b);
+      color: #0b1120;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 4px;
+      margin-top: 4px;
+    }
+
+    .tab {
+      flex: 1;
+      padding: 6px 0;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.8rem;
+      text-align: center;
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.95);
+      color: var(--text-muted);
+    }
+
+    .tab.active {
+      border-color: var(--accent);
+      background: linear-gradient(135deg, #f97316, #f59e0b);
+      color: #0b1120;
+      font-weight: 600;
+    }
+
     .card {
       position: relative;
-      background: radial-gradient(circle at top, #1f2937, #020617);
-      border-radius: 20px;
-      padding: 26px 20px;
-      min-height: 260px;
+      background: radial-gradient(circle at top, #111827, #020617);
+      border-radius: 24px;
+      padding: 30px 24px 20px;
+      min-height: 290px;
       box-shadow:
         0 18px 40px rgba(0, 0, 0, 0.6),
         0 0 0 1px rgba(148, 163, 184, 0.15);
@@ -215,14 +260,15 @@
     }
 
     .english {
-      font-size: 2rem;
+      font-size: 2.3rem;
       font-weight: 700;
       letter-spacing: 0.06em;
+      padding: 0 8px;
     }
 
     .arabic {
-      font-size: 2.2rem;
-      line-height: 1.4;
+      font-size: 2.4rem;
+      line-height: 1.5;
       direction: rtl;
       font-family: -apple-system, system-ui, "SF Arabic", "Geeza Pro",
         "Arial", "Segoe UI", sans-serif;
@@ -230,12 +276,12 @@
 
     .translit {
       margin-top: 8px;
-      font-size: 1rem;
+      font-size: 1.05rem;
       color: var(--text-muted);
     }
 
     .hint {
-      margin-top: 16px;
+      margin-top: 10px;
       font-size: 0.8rem;
       color: var(--text-muted);
     }
@@ -273,6 +319,11 @@
       background: rgba(15,23,42,0.9);
     }
 
+    button.danger {
+      border-color: var(--danger);
+      color: var(--danger);
+    }
+
     button:active {
       transform: translateY(1px);
       box-shadow: none;
@@ -289,6 +340,113 @@
       font-size: 0.7rem;
       color: var(--text-muted);
     }
+
+    .typing-area {
+      margin-top: 10px;
+      width: 100%;
+    }
+
+    .typing-area input {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.7);
+      background: rgba(15,23,42,0.9);
+      color: var(--text-main);
+      font-size: 0.9rem;
+    }
+
+    .typing-feedback {
+      margin-top: 5px;
+      font-size: 0.8rem;
+    }
+
+    .typing-feedback.ok {
+      color: var(--known);
+    }
+
+    .typing-feedback.bad {
+      color: var(--danger);
+    }
+
+    .audio-btn {
+      position: absolute;
+      bottom: 14px;
+      left: 16px;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      font-size: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .canvas-wrap {
+      margin-top: 8px;
+      width: 100%;
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .canvas-wrap canvas {
+      width: 100%;
+      height: 140px;
+      border-radius: 14px;
+      background: #020617;
+      border: 1px solid rgba(148, 163, 184, 0.6);
+      touch-action: none;
+    }
+
+    .quiz-panel {
+      margin-top: 10px;
+      border-radius: 18px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      background: rgba(15, 23, 42, 0.9);
+      padding: 14px 12px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quiz-question {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .quiz-option {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.4);
+      font-size: 0.85rem;
+      cursor: pointer;
+      background: rgba(15, 23, 42, 0.9);
+    }
+
+    .quiz-option.correct {
+      border-color: var(--known);
+      background: rgba(34, 197, 94, 0.12);
+    }
+
+    .quiz-option.wrong {
+      border-color: var(--danger);
+      background: rgba(248, 113, 113, 0.12);
+    }
+
+    .quiz-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
   </style>
 </head>
 <body>
@@ -298,47 +456,98 @@
         <h1>Levantine Arabic</h1>
         <span id="counter" class="counter"></span>
       </div>
-      <div class="filters">
-        <div>
-          <label for="category-filter">Category</label>
-          <select id="category-filter"></select>
-        </div>
-        <div>
-          <label for="status-filter">Show</label>
-          <select id="status-filter">
-            <option value="all">All</option>
-            <option value="unknown">Unknown</option>
-            <option value="known">Known</option>
-          </select>
-        </div>
-      </div>
+      <div class="streak" id="streak-label">🔥 0-day streak</div>
     </header>
 
-    <div id="card" class="card">
-      <div class="pill" id="category-pill"></div>
-      <div class="side-label" id="side-label">Front · EN</div>
-      <div id="known-pill" class="known-pill" style="display:none;">Known</div>
-      <div id="card-content"></div>
-      <div class="hint">Tap the card or “Flip” to see Arabic · اضغط / إضغطي لتقليب البطاقة</div>
+    <div class="filters-row">
+      <div>
+        <label for="category-filter">Category</label>
+        <select id="category-filter"></select>
+      </div>
+      <div>
+        <label for="status-filter">Show</label>
+        <select id="status-filter">
+          <option value="all">All</option>
+          <option value="unknown">Unknown</option>
+          <option value="known">Known</option>
+        </select>
+      </div>
+      <div class="mode-chip" id="smart-mode-chip">Smart mode: off</div>
     </div>
 
-    <div class="controls">
-      <button id="prev-btn">⟵ Previous</button>
-      <button id="flip-btn" class="primary">Flip</button>
-      <button id="next-btn">Next ⟶</button>
+    <div class="tabs">
+      <div class="tab active" id="tab-cards">Cards</div>
+      <div class="tab" id="tab-quiz">Quiz</div>
     </div>
 
-    <div class="controls">
-      <button id="toggle-known-btn" class="ghost small">Mark as Known ✅</button>
-      <button id="shuffle-btn" class="small">Shuffle deck 🔀</button>
+    <div id="cards-view">
+      <div id="card" class="card">
+        <div class="pill" id="category-pill"></div>
+        <div class="side-label" id="side-label">Front · EN</div>
+        <div id="known-pill" class="known-pill" style="display:none;">Known</div>
+        <div class="audio-btn" id="audio-btn">🔊 Audio</div>
+        <div id="card-content"></div>
+        <div class="hint" id="hint-text">
+          Tap card / “Flip” to see Arabic · اضغط / إضغطي لتقليب البطاقة
+        </div>
+      </div>
+
+      <div class="typing-area" id="typing-area" style="display:none;">
+        <input id="typing-input" placeholder="Type the transliteration (e.g. keef)" />
+        <div id="typing-feedback" class="typing-feedback"></div>
+      </div>
+
+      <div class="canvas-wrap" id="canvas-wrap">
+        <canvas id="write-canvas"></canvas>
+        <div class="controls">
+          <button class="small ghost" id="clear-canvas-btn">Clear drawing</button>
+        </div>
+      </div>
+
+      <div class="controls">
+        <button id="prev-btn">⟵ Previous</button>
+        <button id="flip-btn" class="primary">Flip</button>
+        <button id="next-btn">Next ⟶</button>
+      </div>
+
+      <div class="controls">
+        <button id="toggle-known-btn" class="ghost small">Mark as Known ✅</button>
+        <button id="shuffle-btn" class="small">Shuffle deck 🔀</button>
+      </div>
+
+      <div class="controls">
+        <button id="typing-toggle-btn" class="small ghost">Typing practice ⌨️</button>
+        <button id="canvas-toggle-btn" class="small ghost">Handwriting ✏️</button>
+      </div>
+
+      <div class="controls">
+        <button id="got-it-btn" class="small">I got it 👍</button>
+        <button id="oops-btn" class="small ghost">I was wrong 😅</button>
+      </div>
+    </div>
+
+    <div id="quiz-view" style="display:none;">
+      <div class="quiz-panel" id="quiz-panel">
+        <div class="quiz-question" id="quiz-question"></div>
+        <div class="quiz-options" id="quiz-options"></div>
+        <div class="quiz-meta">
+          <span id="quiz-progress"></span>
+          <span id="quiz-result"></span>
+        </div>
+      </div>
+      <div class="controls">
+        <button id="start-quiz-btn" class="primary small">Start quiz 🎯</button>
+        <button id="reset-quiz-btn" class="ghost small">Reset quiz</button>
+      </div>
     </div>
 
     <footer>
-      Progress is saved on this device (localStorage).
+      Progress, streaks & known words are saved on this device only.
     </footer>
   </div>
 
   <script>
+    // ---- DATA ----
     const cards = [
       // 1. Days of the Week / Time Words
       { category: "Days", front: "Sunday", arabic: "الأحد", translit: "el-ahad" },
@@ -496,7 +705,10 @@
       { category: "Verbs", front: "I like Beirut.", arabic: "بحب بيروت", translit: "behebb Beirut" }
     ];
 
-    const STORAGE_KEY = "lev_flashcards_known_v1";
+    // ---- STATE & STORAGE ----
+    const STORAGE_KNOWN = "lev_flashcards_known_v1";
+    const STORAGE_META = "lev_flashcards_meta_v1";
+    const STORAGE_STREAK = "lev_flashcards_streak_v1";
 
     function cardId(card) {
       return `${card.category}|${card.front}|${card.arabic}`;
@@ -504,25 +716,59 @@
 
     function loadKnownSet() {
       try {
-        const raw = localStorage.getItem(STORAGE_KEY);
+        const raw = localStorage.getItem(STORAGE_KNOWN);
         if (!raw) return new Set();
-        const arr = JSON.parse(raw);
-        return new Set(arr);
-      } catch (e) {
+        return new Set(JSON.parse(raw));
+      } catch {
         return new Set();
       }
     }
 
     function saveKnownSet(set) {
-      const arr = Array.from(set);
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(arr));
+      localStorage.setItem(STORAGE_KNOWN, JSON.stringify(Array.from(set)));
+    }
+
+    function loadMeta() {
+      try {
+        const raw = localStorage.getItem(STORAGE_META);
+        return raw ? JSON.parse(raw) : {};
+      } catch {
+        return {};
+      }
+    }
+
+    function saveMeta(meta) {
+      localStorage.setItem(STORAGE_META, JSON.stringify(meta));
+    }
+
+    function loadStreak() {
+      try {
+        const raw = localStorage.getItem(STORAGE_STREAK);
+        return raw ? JSON.parse(raw) : { streak: 0, lastDay: null };
+      } catch {
+        return { streak: 0, lastDay: null };
+      }
+    }
+
+    function saveStreak(s) {
+      localStorage.setItem(STORAGE_STREAK, JSON.stringify(s));
     }
 
     let knownSet = loadKnownSet();
+    let meta = loadMeta();
+    let streakData = loadStreak();
+
     let showFront = true;
     let currentIndex = 0;
     let filteredIndices = [];
+    let smartMode = false;
 
+    // quiz
+    let quizDeck = [];
+    let quizIndex = 0;
+    let quizScore = 0;
+
+    // ---- DOM ----
     const counterEl = document.getElementById("counter");
     const cardEl = document.getElementById("card");
     const cardContentEl = document.getElementById("card-content");
@@ -536,35 +782,71 @@
     const toggleKnownBtn = document.getElementById("toggle-known-btn");
     const categoryFilterEl = document.getElementById("category-filter");
     const statusFilterEl = document.getElementById("status-filter");
+    const smartModeChip = document.getElementById("smart-mode-chip");
+    const streakLabel = document.getElementById("streak-label");
+    const typingToggleBtn = document.getElementById("typing-toggle-btn");
+    const typingArea = document.getElementById("typing-area");
+    const typingInput = document.getElementById("typing-input");
+    const typingFeedback = document.getElementById("typing-feedback");
+    const canvasToggleBtn = document.getElementById("canvas-toggle-btn");
+    const canvasWrap = document.getElementById("canvas-wrap");
+    const canvas = document.getElementById("write-canvas");
+    const clearCanvasBtn = document.getElementById("clear-canvas-btn");
+    const gotItBtn = document.getElementById("got-it-btn");
+    const oopsBtn = document.getElementById("oops-btn");
+    const audioBtn = document.getElementById("audio-btn");
+    const hintText = document.getElementById("hint-text");
 
+    const tabCards = document.getElementById("tab-cards");
+    const tabQuiz = document.getElementById("tab-quiz");
+    const cardsView = document.getElementById("cards-view");
+    const quizView = document.getElementById("quiz-view");
+    const quizPanel = document.getElementById("quiz-panel");
+    const quizQuestion = document.getElementById("quiz-question");
+    const quizOptions = document.getElementById("quiz-options");
+    const quizProgress = document.getElementById("quiz-progress");
+    const quizResult = document.getElementById("quiz-result");
+    const startQuizBtn = document.getElementById("start-quiz-btn");
+    const resetQuizBtn = document.getElementById("reset-quiz-btn");
+
+    // ---- CATEGORY FILTER UI ----
     const categorySet = new Set(cards.map(c => c.category));
-    const categories = ["All"].concat(Array.from(categorySet));
-
+    const categories = ["All"].concat(Array.from(categorySet).sort());
     categories.forEach(cat => {
       const opt = document.createElement("option");
       opt.value = cat;
       opt.textContent = cat;
       categoryFilterEl.appendChild(opt);
     });
-
     categoryFilterEl.value = "All";
-    statusFilterEl.value = "all";
 
     function recomputeFilteredIndices() {
       const catFilter = categoryFilterEl.value;
       const statusFilter = statusFilterEl.value;
-      filteredIndices = [];
+      const now = Date.now();
 
+      let indices = [];
       cards.forEach((card, idx) => {
         if (catFilter !== "All" && card.category !== catFilter) return;
         const id = cardId(card);
         const isKnown = knownSet.has(id);
-
         if (statusFilter === "known" && !isKnown) return;
         if (statusFilter === "unknown" && isKnown) return;
-
-        filteredIndices.push(idx);
+        indices.push(idx);
       });
+
+      if (smartMode) {
+        indices.sort((a, b) => {
+          const ca = cards[a], cb = cards[b];
+          const ma = meta[cardId(ca)] || {};
+          const mb = meta[cardId(cb)] || {};
+          const da = ma.nextDue || 0;
+          const db = mb.nextDue || 0;
+          return (da || 0) - (db || 0);
+        });
+      }
+
+      filteredIndices = indices;
 
       if (filteredIndices.length === 0) {
         currentIndex = 0;
@@ -575,16 +857,30 @@
 
     function getFilteredPosition() {
       const pos = filteredIndices.indexOf(currentIndex);
-      if (pos === -1) return 0;
-      return pos;
+      return pos === -1 ? 0 : pos;
+    }
+
+    function renderStreak() {
+      const today = new Date();
+      const dayStr = today.toISOString().slice(0, 10);
+      if (streakData.lastDay !== dayStr) {
+        const yesterday = new Date(today.getTime() - 86400000).toISOString().slice(0,10);
+        if (streakData.lastDay === yesterday) {
+          streakData.streak += 1;
+        } else {
+          streakData.streak = 1;
+        }
+        streakData.lastDay = dayStr;
+        saveStreak(streakData);
+      }
+      streakLabel.textContent = `🔥 ${streakData.streak}-day streak`;
     }
 
     function renderCard() {
       recomputeFilteredIndices();
 
       if (filteredIndices.length === 0) {
-        cardContentEl.innerHTML =
-          "<div style='font-size:0.9rem;color:#9ca3af;'>No cards match this filter.</div>";
+        cardContentEl.innerHTML = "<div style='font-size:0.9rem;color:#9ca3af;'>No cards match this filter.</div>";
         counterEl.textContent = "0 / 0";
         categoryPillEl.textContent = "None";
         sideLabelEl.textContent = showFront ? "Front · EN" : "Back · AR";
@@ -610,6 +906,7 @@
         en.className = "english";
         en.textContent = card.front;
         cardContentEl.appendChild(en);
+        hintText.textContent = "Tap card / Flip to see Arabic · اضغط / إضغطي لتقليب البطاقة";
       } else {
         sideLabelEl.textContent = "Back · AR";
         const ar = document.createElement("div");
@@ -620,6 +917,7 @@
         tr.textContent = card.translit;
         cardContentEl.appendChild(ar);
         cardContentEl.appendChild(tr);
+        hintText.textContent = "Tap card / Flip to go back · جرّب تنطقها بصوت عالي";
       }
     }
 
@@ -630,6 +928,8 @@
       const nextPos = (pos + 1) % filteredIndices.length;
       currentIndex = filteredIndices[nextPos];
       showFront = true;
+      typingInput.value = "";
+      typingFeedback.textContent = "";
       renderCard();
     }
 
@@ -640,6 +940,8 @@
       const prevPos = (pos - 1 + filteredIndices.length) % filteredIndices.length;
       currentIndex = filteredIndices[prevPos];
       showFront = true;
+      typingInput.value = "";
+      typingFeedback.textContent = "";
       renderCard();
     }
 
@@ -670,6 +972,257 @@
       renderCard();
     }
 
+    function normalize(str) {
+      return (str || "")
+        .toString()
+        .toLowerCase()
+        .replace(/[^a-z0-9ءاأإآؤئبةتثجحخدذرزسشصضطظعغفقكلمنهوي]/g, "");
+    }
+
+    function checkTyping() {
+      const card = cards[currentIndex];
+      const expected = normalize(card.translit);
+      const typed = normalize(typingInput.value);
+      if (!typed) {
+        typingFeedback.textContent = "";
+        typingFeedback.className = "typing-feedback";
+        return;
+      }
+      if (typed === expected) {
+        typingFeedback.textContent = "✔︎ Correct!";
+        typingFeedback.className = "typing-feedback ok";
+      } else {
+        typingFeedback.textContent = `✗ Not quite. Answer: ${card.translit}`;
+        typingFeedback.className = "typing-feedback bad";
+      }
+    }
+
+    function toggleTyping() {
+      const active = typingArea.style.display === "block";
+      typingArea.style.display = active ? "none" : "block";
+      typingToggleBtn.classList.toggle("primary", !active);
+      typingToggleBtn.classList.toggle("ghost", active);
+      if (!active) typingInput.focus();
+    }
+
+    // handwriting canvas
+    let drawing = false;
+    let lastX = 0, lastY = 0;
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const ratio = window.devicePixelRatio || 1;
+      canvas.width = rect.width * ratio;
+      canvas.height = rect.height * ratio;
+      const ctx = canvas.getContext("2d");
+      ctx.scale(ratio, ratio);
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.strokeStyle = "#f97316";
+      ctx.lineWidth = 4;
+    }
+
+    function startDraw(x, y) {
+      drawing = true;
+      lastX = x;
+      lastY = y;
+    }
+    function drawTo(x, y) {
+      if (!drawing) return;
+      const ctx = canvas.getContext("2d");
+      ctx.beginPath();
+      ctx.moveTo(lastX, lastY);
+      ctx.lineTo(x, y);
+      ctx.stroke();
+      lastX = x;
+      lastY = y;
+    }
+    function endDraw() {
+      drawing = false;
+    }
+
+    function setupCanvasEvents() {
+      resizeCanvas();
+      window.addEventListener("resize", resizeCanvas);
+      canvas.addEventListener("mousedown", e => startDraw(e.offsetX, e.offsetY));
+      canvas.addEventListener("mousemove", e => drawTo(e.offsetX, e.offsetY));
+      window.addEventListener("mouseup", endDraw);
+      canvas.addEventListener("touchstart", e => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const t = e.touches[0];
+        startDraw(t.clientX - rect.left, t.clientY - rect.top);
+      }, {passive:false});
+      canvas.addEventListener("touchmove", e => {
+        e.preventDefault();
+        const rect = canvas.getBoundingClientRect();
+        const t = e.touches[0];
+        drawTo(t.clientX - rect.left, t.clientY - rect.top);
+      }, {passive:false});
+      window.addEventListener("touchend", endDraw);
+    }
+
+    function toggleCanvas() {
+      const active = canvasWrap.style.display === "flex";
+      canvasWrap.style.display = active ? "none" : "flex";
+      canvasToggleBtn.classList.toggle("primary", !active);
+      canvasToggleBtn.classList.toggle("ghost", active);
+      if (!active) resizeCanvas();
+    }
+
+    clearCanvasBtn.addEventListener("click", () => {
+      const ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    // spaced repetition-ish
+    function updateMeta(correct) {
+      const card = cards[currentIndex];
+      const id = cardId(card);
+      const now = Date.now();
+      const info = meta[id] || { box: 1, lastSeen: now, nextDue: now };
+      if (correct) {
+        info.box = Math.min(info.box + 1, 5);
+      } else {
+        info.box = 1;
+      }
+      const intervals = [0, 1, 2, 4, 7, 14]; // days
+      const days = intervals[info.box] || 14;
+      info.lastSeen = now;
+      info.nextDue = now + days * 86400000;
+      meta[id] = info;
+      saveMeta(meta);
+    }
+
+    function markGotIt() {
+      updateMeta(true);
+      moveNext();
+    }
+
+    function markOops() {
+      updateMeta(false);
+      moveNext();
+    }
+
+    function toggleSmartMode() {
+      smartMode = !smartMode;
+      smartModeChip.classList.toggle("active", smartMode);
+      smartModeChip.textContent = smartMode ? "Smart mode: on" : "Smart mode: off";
+      showFront = true;
+      renderCard();
+    }
+
+    // audio
+    function speakCurrent() {
+      const card = cards[currentIndex];
+      if (!window.speechSynthesis) {
+        alert("Speech not supported on this device.");
+        return;
+      }
+      const utter = new SpeechSynthesisUtterance(card.arabic);
+      utter.lang = "ar-LB"; // Lebanese Arabic if available
+      window.speechSynthesis.cancel();
+      window.speechSynthesis.speak(utter);
+    }
+
+    // quiz
+    function buildQuizDeck() {
+      const baseIndices = [...Array(cards.length).keys()];
+      // simple shuffle
+      for (let i = baseIndices.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [baseIndices[i], baseIndices[j]] = [baseIndices[j], baseIndices[i]];
+      }
+      quizDeck = baseIndices.slice(0, 15); // up to 15 questions
+      quizIndex = 0;
+      quizScore = 0;
+    }
+
+    function renderQuizQuestion() {
+      if (quizDeck.length === 0 || quizIndex >= quizDeck.length) {
+        quizPanel.style.display = "flex";
+        quizQuestion.textContent = "Quiz finished!";
+        quizOptions.innerHTML = "";
+        quizProgress.textContent = "";
+        quizResult.textContent = `Score: ${quizScore}/${quizDeck.length}`;
+        return;
+      }
+      quizPanel.style.display = "flex";
+      const idx = quizDeck[quizIndex];
+      const card = cards[idx];
+      quizQuestion.textContent = `What is the Arabic for: “${card.front}”?`;
+      const correct = card.arabic;
+      // pick 3 other random cards
+      const others = [];
+      while (others.length < 3) {
+        const r = Math.floor(Math.random() * cards.length);
+        if (r !== idx && !others.includes(r)) others.push(r);
+      }
+      const options = [correct, ...others.map(i => cards[i].arabic)];
+      for (let i = options.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [options[i], options[j]] = [options[j], options[i]];
+      }
+
+      quizOptions.innerHTML = "";
+      options.forEach(opt => {
+        const div = document.createElement("div");
+        div.className = "quiz-option";
+        div.textContent = opt;
+        div.addEventListener("click", () => {
+          if (div.dataset.clicked) return;
+          div.dataset.clicked = "1";
+          if (opt === correct) {
+            div.classList.add("correct");
+            quizScore++;
+            quizResult.textContent = "Correct ✅";
+          } else {
+            div.classList.add("wrong");
+            quizResult.textContent = `Answer: ${correct}`;
+          }
+          setTimeout(() => {
+            quizIndex++;
+            quizResult.textContent = "";
+            renderQuizQuestion();
+          }, 800);
+        });
+        quizOptions.appendChild(div);
+      });
+
+      quizProgress.textContent = `${quizIndex + 1} / ${quizDeck.length}`;
+    }
+
+    function startQuiz() {
+      buildQuizDeck();
+      renderQuizQuestion();
+    }
+
+    function resetQuiz() {
+      quizDeck = [];
+      quizIndex = 0;
+      quizScore = 0;
+      quizPanel.style.display = "none";
+      quizQuestion.textContent = "";
+      quizOptions.innerHTML = "";
+      quizProgress.textContent = "";
+      quizResult.textContent = "";
+    }
+
+    // tabs
+    function showCardsTab() {
+      tabCards.classList.add("active");
+      tabQuiz.classList.remove("active");
+      cardsView.style.display = "block";
+      quizView.style.display = "none";
+    }
+    function showQuizTab() {
+      tabQuiz.classList.add("active");
+      tabCards.classList.remove("active");
+      cardsView.style.display = "none";
+      quizView.style.display = "block";
+    }
+
+    // ---- EVENT BINDINGS ----
     cardEl.addEventListener("click", flipCard);
     flipBtn.addEventListener("click", flipCard);
     nextBtn.addEventListener("click", moveNext);
@@ -678,16 +1231,31 @@
     toggleKnownBtn.addEventListener("click", toggleKnown);
     categoryFilterEl.addEventListener("change", () => {
       showFront = true;
-      recomputeFilteredIndices();
       renderCard();
     });
     statusFilterEl.addEventListener("change", () => {
       showFront = true;
-      recomputeFilteredIndices();
       renderCard();
     });
+    smartModeChip.addEventListener("click", toggleSmartMode);
+    typingToggleBtn.addEventListener("click", toggleTyping);
+    typingInput.addEventListener("input", checkTyping);
+    canvasToggleBtn.addEventListener("click", toggleCanvas);
+    gotItBtn.addEventListener("click", markGotIt);
+    oopsBtn.addEventListener("click", markOops);
+    audioBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      speakCurrent();
+    });
 
-    recomputeFilteredIndices();
+    tabCards.addEventListener("click", showCardsTab);
+    tabQuiz.addEventListener("click", showQuizTab);
+    startQuizBtn.addEventListener("click", startQuiz);
+    resetQuizBtn.addEventListener("click", resetQuiz);
+
+    // init
+    setupCanvasEvents();
+    renderStreak();
     renderCard();
   </script>
 </body>
