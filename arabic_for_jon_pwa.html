@@ -7,11 +7,9 @@
   <meta name="theme-color" content="#000000" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <!-- Make sure this filename matches the icon in your repo -->
   <link rel="apple-touch-icon" sizes="180x180" href="icon-arabic-jon.png" />
 
   <script>
-    // --- PWA manifest with embedded icon ---
     const manifest = {
       name: "Arabic for Jon",
       short_name: "Arabic",
@@ -21,7 +19,7 @@
       theme_color: "#000000",
       icons: [
         {
-          src: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAAFigAwAEAAAAAQAAAGoAAAAA/+EDQ2FsaWJyYXRlZCB3aXRoIEdJTVD/2wBDAAgGBgcGBQgHBwcJCQgKDBQNDAsLDBkSEw8UHRofHh0aHBwgJC4nICIsIxwcKDcpLDAxNDQ0Hyc5PTgyPC4zNDL/2wBDAQkJCQwLDBgNDRgyIRwhMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjIyMjL/wAARCAA2AO4DASIAAhEBAxEB/8QAHQAAAgIDAQEBAQAAAAAAAAAABQYEBwEDCAIBCf/EAEgQAAECBAQDBQcECAQDCQEAAAECEQADBCEFEjEGQVFhEyKxgRQykbHB0eHwFCNSYuEzgpLh8XKyJEOTFjNUk6L/xAAZAQADAQEBAAAAAAAAAAAAAAABAgMABAX/xAAsEQACAgICAgEDBAICAwAAAAAAAAECESExAxJBUXETImFxgZGhsf/aAAwDAQACEQMRAD8A+4iiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgIiICIiAiIgk3IuwnGckL9iDTjFcF3p33c0f51QDx1HwhL7z63H9lWvIYa4txOF4puJ5uF7tDX5g8+prPqjHNaSXFrHYnLsL3rsOXZ51Kp2W1ss6uF95zNvXXrPpcvKtnG3qVxvdvR4bP7nyS5+ZV2xuuSPf5PH0p7y5KcVtbZW9w5i9eV1fY8Os9QXOtq9tbfJvNbe08P0I5+0fH0qvMG6GsrK21pBaW3A7d6+5VfZcTX6ozx9Y7h+0+X7L7n6Co7bW2u7t5bu8vjqKp+UxH0Iu8pC6r6bXV9q2vt5rdP82uXLX0n7TR2l9S0HTLd1/3L4N5PO3+VVJ7m0djc7rW9mm2u3r5445b4P0pWksfYw2y2t413JXnF2PX3+le0e1m8lWl1G8mls7vLq45jKx7nj+VeC8Vb1Gaqrm8s7rueznedff5Vbbi21bafW+JsPdd+l7bT6C5Z7Odfp8Pqa73tGvL2q3K7dS7ay7x3f5k+dMXmrdSy8HsF0pLsbq9+W5f+TOt5q6JktzSjcN2u8ea8t8KmlvDe2XcO7fP0P8Afa7qVj3qN9V60bVdY8pOa7L6Nw+yp87Hy9v3U3Z2k3urxt7kvOfobj9J8tKqpCiiiqICoqKqCq9sabfX7Xz2fa4e3VC6klq1nbbX8mtaW1w4fN2+Tg/Td57bT2OtW1f3ek31+Rd7cXvP0+J+tZw+wtb7GztdFxu3s+Xj/AOHT9K8E3qLqRrq2ldbrfWfN+r3X9vlOPqaW/8AZnj5m+z+FH9spPCtG5Jbq3ttt7c3Pp5Zz9PSsL2c3b3vLw2+V5tX3yk1JXaoxy61dml7Z9yt5P5s6p7u1G6pq3d1d04t/eX8DKzzq6Nt7V7J/AGt4rx3sy9W/ZXGeoeqY/JW1/Av5W9Y3JpLbTy5b7t3d7cv89/TvFXdV9zX0p0PqfBvpGqqgqqKCqCoiqAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKAioCKA//2Q==",
+          src: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAAFigAwAEAAAAAQAAAGoAAAAA/+EDQ2FsaWJyYXRlZCB3aXRoIEdJTVD/2wBDA...
           sizes: "512x512",
           type: "image/jpeg"
         }
@@ -37,20 +35,15 @@
       document.head.appendChild(link);
     })();
 
-    // --- Service worker for offline support ---
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         const swCode = `
           const CACHE = 'arabic-for-jon-v5';
           self.addEventListener('install', e => {
-            e.waitUntil(
-              caches.open(CACHE).then(c => c.addAll(['./', './arabic_for_jon_pwa.html']))
-            );
+            e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', './arabic_for_jon_pwa.html'])));
           });
           self.addEventListener('fetch', e => {
-            e.respondWith(
-              caches.match(e.request).then(r => r || fetch(e.request))
-            );
+            e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
           });
         `;
         const blob = new Blob([swCode], { type: "application/javascript" });
@@ -62,7 +55,6 @@
 
   <style>
     :root {
-      /* Base tokens (overridden by theme classes on <body>) */
       --bg: #f6f6f6;
       --card-bg: #ffffff;
       --card-border: rgba(0, 0, 0, 0.08);
@@ -78,9 +70,6 @@
       --danger: #b91c1c;
     }
 
-    /* --- THEMES --- */
-
-    /* Minimal: black & white, editorial */
     body.theme-minimal {
       --bg: #f5f5f5;
       --card-bg: #ffffff;
@@ -89,40 +78,32 @@
       --text-muted: #6b7280;
       --accent: #111111;
       --accent-soft: rgba(0, 0, 0, 0.03);
-      --pill-bg: #ffffff;
-      --pill-border: rgba(0, 0, 0, 0.16);
-      --control-bg: #ffffff;
-      --control-border: rgba(0, 0, 0, 0.16);
     }
 
-    /* Colorful: warm MK palette (Palette A) */
+    body.theme-minimal button.primary,
+    body.theme-minimal .tab.active,
+    body.theme-minimal .theme-btn.theme-active {
+      color: white !important;
+    }
+
     body.theme-colorful {
-      --bg: radial-gradient(circle at top, #F6F1E9 0, #E8D7C5 45%, #1D1C1A 100%);
+      --bg: linear-gradient(
+        140deg,
+        #F6F1E9 0%,
+        #F0D8C9 30%,
+        #D7A392 60%,
+        #6F8FAB 100%
+      );
       --card-bg: linear-gradient(135deg, #F6F1E9, #EBC8B2);
-      --card-border: rgba(0, 0, 0, 0.12);
-      --text-main: #1D1C1A;
-      --text-muted: #6b7280;
-      --accent: #D37F6F; /* terracotta */
+      --accent: #D37F6F;
       --accent-soft: rgba(211, 127, 111, 0.18);
-      --pill-bg: rgba(255, 255, 255, 0.95);
-      --pill-border: rgba(148, 163, 184, 0.5);
-      --control-bg: rgba(255, 255, 255, 0.92);
-      --control-border: rgba(148, 163, 184, 0.45);
+      --pill-bg: rgba(255,255,255,0.95);
     }
 
-    /* Dark: deep ink + warm accent */
     body.theme-dark {
-      --bg: radial-gradient(circle at top, #111827 0, #020617 55%);
+      --bg: radial-gradient(circle at top,#111827 0,#020617 55%);
       --card-bg: #020617;
-      --card-border: rgba(148, 163, 184, 0.35);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --accent: #f2c27b; /* warm gold */
-      --accent-soft: rgba(242, 194, 123, 0.22);
-      --pill-bg: rgba(15, 23, 42, 0.96);
-      --pill-border: rgba(148, 163, 184, 0.55);
-      --control-bg: rgba(15, 23, 42, 0.96);
-      --control-border: rgba(148, 163, 184, 0.45);
+      --accent: #f2c27b;
     }
 
     * {
@@ -132,18 +113,15 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
-        "Helvetica Neue", Arial, sans-serif;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont;
       background: var(--bg);
       color: var(--text-main);
+      min-height: 100vh;
+      padding: 16px;
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
       align-items: center;
-      justify-content: center;
-      padding: 16px;
     }
-
     .app-shell {
       width: 100%;
       max-width: 520px;
@@ -224,48 +202,7 @@
     .tab.active {
       border-color: var(--accent);
       background: var(--accent);
-      color: #0b1120;
-      font-weight: 600;
-    }
-
-    /* Theme toggle row */
-    .theme-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-top: 2px;
-      gap: 8px;
-      font-size: 0.75rem;
-    }
-
-    .theme-label {
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .theme-buttons {
-      display: flex;
-      gap: 4px;
-    }
-
-    .theme-btn {
-      padding: 4px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--control-border);
-      background: var(--control-bg);
-      font-size: 0.72rem;
-      cursor: pointer;
-      color: var(--text-muted);
-      display: flex;
-      align-items: center;
-      gap: 4px;
-    }
-
-    .theme-btn.theme-active {
-      border-color: var(--accent);
-      background: var(--accent);
-      color: #0b1120;
+      color: white;
       font-weight: 600;
     }
 
@@ -286,14 +223,6 @@
       text-align: center;
       cursor: pointer;
       overflow: hidden;
-    }
-
-    .card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top left, var(--accent-soft), transparent 60%);
-      pointer-events: none;
     }
 
     .pill {
@@ -391,12 +320,8 @@
     button.primary {
       border-color: var(--accent);
       background: var(--accent);
-      color: #0b1120;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    }
-
-    button.ghost {
-      background: var(--control-bg);
+      color: #ffffff;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     }
 
     button:active {
@@ -409,14 +334,6 @@
       opacity: 0.9;
     }
 
-    footer {
-      margin-top: 8px;
-      text-align: center;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-    }
-
-    /* Word list view */
     #list-view {
       display: none;
       border-radius: 18px;
@@ -436,24 +353,14 @@
       font-size: 0.8rem;
     }
 
+    .list-controls input,
     .list-controls select {
       background: var(--control-bg);
-      color: var(--text-main);
       border-radius: 999px;
       border: 1px solid var(--control-border);
       padding: 4px 10px;
       font-size: 0.8rem;
-    }
-
-    .list-controls input {
-      flex: 1;
-      min-width: 120px;
-      padding: 5px 9px;
-      border-radius: 999px;
-      border: 1px solid var(--control-border);
-      background: var(--control-bg);
       color: var(--text-main);
-      font-size: 0.8rem;
     }
 
     .list-body {
@@ -475,103 +382,47 @@
       cursor: pointer;
     }
 
-    .list-row-main {
+    /* theme selector at bottom */
+    .theme-row {
       display: flex;
       justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
       gap: 8px;
-      align-items: baseline;
+      font-size: 0.75rem;
     }
 
-    .list-en {
-      font-size: 0.95rem;
+    .theme-label {
+      color: var(--text-muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .theme-buttons {
+      display: flex;
+      gap: 4px;
+    }
+
+    .theme-btn {
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid var(--control-border);
+      background: var(--control-bg);
+      font-size: 0.72rem;
+      cursor: pointer;
+      color: var(--text-muted);
+    }
+
+    .theme-btn.theme-active {
+      background: var(--accent);
+      border-color: var(--accent);
+      color: white;
       font-weight: 600;
     }
 
-    .list-ar {
-      font-size: 1.1rem;
-      direction: rtl;
-      font-family: -apple-system, system-ui, "SF Arabic", "Geeza Pro",
-        "Arial", "Segoe UI", sans-serif;
-    }
-
-    .list-tr {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
-    .list-meta {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.7rem;
-      color: var(--text-muted);
-      margin-top: 2px;
-    }
-
-    .badge-category {
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--pill-border);
-      font-size: 0.7rem;
-    }
-
-    .badge-known {
-      padding: 2px 8px;
-      border-radius: 999px;
-      border: 1px solid var(--known);
-      font-size: 0.7rem;
-      color: var(--known);
-    }
-
-    /* Quiz panel */
-    .quiz-panel {
-      margin-top: 6px;
-      border-radius: 18px;
-      border: 1px solid var(--card-border);
-      background: var(--control-bg);
-      padding: 14px 12px;
-      display: none;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .quiz-question {
-      font-size: 0.9rem;
-      margin-bottom: 4px;
-    }
-
-    .quiz-options {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .quiz-option {
-      padding: 7px 10px;
-      border-radius: 999px;
-      border: 1px solid var(--control-border);
-      font-size: 0.85rem;
-      cursor: pointer;
-      background: var(--control-bg);
-    }
-
-    .quiz-option.correct {
-      border-color: var(--known);
-      background: rgba(34, 197, 94, 0.12);
-    }
-
-    .quiz-option.wrong {
-      border-color: var(--danger);
-      background: rgba(248, 113, 113, 0.12);
-    }
-
-    .quiz-meta {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      display: flex;
-      justify-content: space-between;
-    }
   </style>
 </head>
+
 <body class="theme-colorful">
   <div class="app-shell">
     <header>
@@ -603,16 +454,6 @@
       <div class="tab" id="tab-quiz">Quiz</div>
     </div>
 
-    <div class="theme-row">
-      <div class="theme-label">Appearance</div>
-      <div class="theme-buttons">
-        <button type="button" class="theme-btn" data-theme="minimal">Minimal</button>
-        <button type="button" class="theme-btn" data-theme="colorful">Colorful</button>
-        <button type="button" class="theme-btn" data-theme="dark">Dark</button>
-      </div>
-    </div>
-
-    <!-- Cards view -->
     <div id="cards-view">
       <div id="card" class="card">
         <div class="pill" id="category-pill"></div>
@@ -631,12 +472,11 @@
       </div>
 
       <div class="controls">
-        <button id="toggle-known-btn" class="ghost small">Mark as Known ✅</button>
-        <button id="shuffle-btn" class="small">Shuffle deck 🔀</button>
+        <button id="toggle-known-btn" class="small">Mark Known</button>
+        <button id="shuffle-btn" class="small">Shuffle 🔀</button>
       </div>
     </div>
 
-    <!-- Word list view -->
     <div id="list-view">
       <div class="list-controls">
         <select id="list-category-filter"></select>
@@ -645,7 +485,6 @@
       <div class="list-body" id="list-body"></div>
     </div>
 
-    <!-- Quiz view -->
     <div id="quiz-view" style="display:none;">
       <div class="quiz-panel" id="quiz-panel">
         <div class="quiz-question" id="quiz-question"></div>
@@ -656,20 +495,31 @@
         </div>
       </div>
       <div class="controls">
-        <button id="start-quiz-btn" class="primary small">Start quiz 🎯</button>
-        <button id="reset-quiz-btn" class="ghost small">Reset quiz</button>
+        <button id="start-quiz-btn" class="primary small">Start</button>
+        <button id="reset-quiz-btn" class="small">Reset</button>
+      </div>
+    </div>
+
+    <!-- THEME SELECTOR MOVED TO BOTTOM -->
+    <div class="theme-row">
+      <div class="theme-label">Appearance</div>
+      <div class="theme-buttons">
+        <button type="button" class="theme-btn" data-theme="minimal">Minimal</button>
+        <button type="button" class="theme-btn" data-theme="colorful">Colorful</button>
+        <button type="button" class="theme-btn" data-theme="dark">Dark</button>
       </div>
     </div>
 
     <footer>
-      Progress, streaks & known words are saved on this device only.
+      Progress saved locally
     </footer>
   </div>
 
   <script>
-    // ---- DATA (same as your last working version) ----
+    /* ---- FULL CARD DATA ---- */
     const cards = [
-      // 1. Days of the Week / Time Words
+
+      /* DAYS OF THE WEEK */
       { category: "Days", front: "Sunday", arabic: "الأحد", translit: "el-ahad" },
       { category: "Days", front: "Monday", arabic: "الإثنين", translit: "et-tnein" },
       { category: "Days", front: "Tuesday", arabic: "الثلاثاء", translit: "et-talata" },
@@ -678,6 +528,7 @@
       { category: "Days", front: "Friday", arabic: "الجمعة", translit: "el-jomaa" },
       { category: "Days", front: "Saturday", arabic: "السبت", translit: "es-sabt" },
 
+      /* TIME WORDS */
       { category: "Time Words", front: "today", arabic: "اليوم", translit: "elyom" },
       { category: "Time Words", front: "tomorrow", arabic: "بكرا", translit: "bukra" },
       { category: "Time Words", front: "day after tomorrow", arabic: "بعد بكرا", translit: "baad bukra" },
@@ -685,146 +536,7 @@
       { category: "Time Words", front: "day before yesterday", arabic: "قبل مبارح", translit: "abl mbarah" },
       { category: "Time Words", front: "now", arabic: "هلّق", translit: "halla" },
 
-      // 2. Time & Clock Language
-      { category: "Time Units", front: "time", arabic: "وقت", translit: "waet" },
-      { category: "Time Units", front: "hour / o'clock", arabic: "ساعة", translit: "saa-a" },
-      { category: "Time Units", front: "hours", arabic: "ساعات", translit: "saa-aat" },
-      { category: "Time Units", front: "minute", arabic: "دقيقة", translit: "da-ee-a" },
-      { category: "Time Units", front: "minutes", arabic: "دقايق", translit: "da-aa-yek" },
-      { category: "Time Units", front: "second", arabic: "ثانية", translit: "saniyeh" },
-      { category: "Time Units", front: "seconds", arabic: "ثواني", translit: "tawani" },
-
-      { category: "Fractions", front: "quarter", arabic: "ربع", translit: "rebaa" },
-      { category: "Fractions", front: "third", arabic: "تلت", translit: "telt" },
-      { category: "Fractions", front: "half", arabic: "نص", translit: "noss" },
-      { category: "Fractions", front: "almost", arabic: "تقريبًا", translit: "ta-reeban" },
-      { category: "Fractions", front: "except / minus", arabic: "إلا", translit: "ella" },
-
-      // 3. Seasons
-      { category: "Seasons", front: "season", arabic: "فصل", translit: "fasel" },
-      { category: "Seasons", front: "seasons", arabic: "فصول", translit: "fusoool" },
-      { category: "Seasons", front: "summer", arabic: "صيف", translit: "seif" },
-      { category: "Seasons", front: "winter", arabic: "شتا", translit: "sheta" },
-      { category: "Seasons", front: "spring", arabic: "ربيع", translit: "rabi" },
-      { category: "Seasons", front: "fall / autumn", arabic: "خريف", translit: "khareef" },
-
-      { category: "Seasons Qs", front: "What's your favorite season? (to m)", arabic: "شو فصلك المفضل؟", translit: "shu faslak el-mofaddal?" },
-      { category: "Seasons Qs", front: "What's your favorite season? (to f)", arabic: "شو فصلك المفضل؟", translit: "shu faslek el-mofaddal?" },
-      { category: "Seasons Qs", front: "What is her favorite season?", arabic: "شو فصلها المفضل؟", translit: "shu fasel-ha el-mofaddal?" },
-      { category: "Seasons Qs", front: "What is his favorite season?", arabic: "شو فصله المفضل؟", translit: "shu fasel-o el-mofaddal?" },
-      { category: "Seasons Ans", front: "My favorite season is fall.", arabic: "فصلي المفضل الخريف", translit: "fasle el-mofaddal el-khareef" },
-      { category: "Seasons Ans", front: "Her favorite season is winter.", arabic: "فصلها المفضل الشتا", translit: "fasel-ha el-mofaddal el-sheta" },
-
-      // 4. Weather
-      { category: "Weather", front: "weather", arabic: "الطقس", translit: "el-ta-es" },
-      { category: "Weather", front: "weather", arabic: "الجو", translit: "el-jaw" },
-      { category: "Weather", front: "nice / pleasant", arabic: "حلو", translit: "helou" },
-      { category: "Weather", front: "not nice", arabic: "مش حلو", translit: "mesh helou" },
-      { category: "Weather", front: "very", arabic: "كتير", translit: "kteer" },
-      { category: "Weather", front: "hot (weather)", arabic: "شوب", translit: "shob" },
-      { category: "Weather", front: "cold (weather)", arabic: "برد", translit: "bard" },
-      { category: "Weather", front: "warm", arabic: "دافي", translit: "dafi" },
-      { category: "Weather", front: "sunny", arabic: "مشمس", translit: "mshammes" },
-      { category: "Weather", front: "cloudy", arabic: "مغيم", translit: "mghayyem" },
-      { category: "Weather", front: "rainy", arabic: "ممطر", translit: "momter" },
-      { category: "Weather", front: "snowy", arabic: "مثلّج", translit: "mtallij" },
-
-      { category: "Weather Nouns", front: "sun", arabic: "شمس", translit: "shamas" },
-      { category: "Weather Nouns", front: "rain", arabic: "مطر", translit: "matar" },
-      { category: "Weather Nouns", front: "snow", arabic: "تلج", translit: "talj" },
-      { category: "Weather Nouns", front: "wind / air", arabic: "هوا", translit: "hawa" },
-
-      { category: "Weather Phrases", front: "It's very windy.", arabic: "في كتير هوا", translit: "fi kteer hawa" },
-      { category: "Weather Phrases", front: "How is the weather today?", arabic: "كيف الجو اليوم؟", translit: "keef el-jaw elyom?" },
-      { category: "Weather Phrases", front: "The weather today is nice.", arabic: "الجو اليوم حلو", translit: "el-jaw elyom helou" },
-      { category: "Weather Phrases", front: "The weather today is not nice.", arabic: "الجو اليوم مش حلو", translit: "el-jaw elyom mesh helou" },
-      { category: "Weather Phrases", front: "The weather today is very nice.", arabic: "الجو اليوم كتير حلو", translit: "el-jaw elyom kteer helou" },
-      { category: "Weather Phrases", front: "There is a lot of wind today.", arabic: "في كتير هوا اليوم", translit: "fi kteer hawa elyom" },
-      { category: "Weather Phrases", front: "How is the weather in summer?", arabic: "كيف الجو بالصيف؟", translit: "keef el-jaw b-seif?" },
-      { category: "Weather Phrases", front: "The weather in summer is very hot.", arabic: "الجو بالصيف كتير شوب", translit: "el-jaw b-seif kteer shob" },
-      { category: "Weather Phrases", front: "How is the weather in winter?", arabic: "كيف الجو بالشتا؟", translit: "keef el-jaw b-sheta?" },
-      { category: "Weather Phrases", front: "The weather in winter is cold and snowy.", arabic: "الجو بالشتا برد ومتلج", translit: "el-jaw b-sheta bard w mtallij" },
-      { category: "Weather Phrases", front: "How is the weather in fall?", arabic: "كيف الجو بالخريف؟", translit: "keef el-jaw b-el-khareef?" },
-      { category: "Weather Phrases", front: "How is the weather in spring?", arabic: "كيف الجو بالربيع؟", translit: "keef el-jaw b-rabi?" },
-      { category: "Weather Phrases", front: "The weather in spring is very warm.", arabic: "الطقس بالربيع كتير دافي", translit: "el-ta-es b-rabi kteer dafi" },
-      { category: "Weather Phrases", front: "Tomorrow the weather is cold and rainy.", arabic: "الجو بكرا برد وممطر", translit: "el-jaw bukra bard w momter" },
-      { category: "Weather Phrases", front: "Yesterday the weather was sunny.", arabic: "الجو مبارح مشمس", translit: "el-jaw mbarah mshammes" },
-
-      // 5. Have
-      { category: "Have", front: "I have", arabic: "عندي", translit: "andi" },
-      { category: "Have", front: "you have (m)", arabic: "عندك", translit: "andak" },
-      { category: "Have", front: "you have (f)", arabic: "عندِك", translit: "andek" },
-      { category: "Have", front: "he has", arabic: "عنده", translit: "ando" },
-      { category: "Have", front: "she has", arabic: "عندها", translit: "anda" },
-      { category: "Have", front: "we have", arabic: "عندنا", translit: "andna" },
-      { category: "Have", front: "you (pl) have", arabic: "عندكن", translit: "andkon" },
-      { category: "Have", front: "they have", arabic: "عندن", translit: "andon" },
-
-      { category: "Have Q&A", front: "Do you (m) have a question?", arabic: "عندك سؤال؟", translit: "andak soal?" },
-      { category: "Have Q&A", front: "Yes, I have a question.", arabic: "إي، عندي سؤال", translit: "eh, andi soal" },
-      { category: "Have Q&A", front: "No, I don't have a question.", arabic: "لا، ما عندي سؤال", translit: "la, ma andi soal" },
-
-      // 6. Question Words
-      { category: "Questions", front: "what?", arabic: "شو", translit: "shu" },
-      { category: "Questions", front: "how?", arabic: "كيف", translit: "keef" },
-      { category: "Questions", front: "where?", arabic: "وين", translit: "ween" },
-      { category: "Questions", front: "when?", arabic: "إمتى", translit: "emta" },
-      { category: "Questions", front: "why?", arabic: "ليش", translit: "lesh" },
-      { category: "Questions", front: "who?", arabic: "مين", translit: "meen" },
-      { category: "Questions", front: "how much / how many?", arabic: "قدّيش", translit: "addeesh" },
-      { category: "Questions", front: "is there / there is?", arabic: "في؟", translit: "fi?" },
-
-      // 7. Pronouns
-      { category: "Pronouns", front: "I", arabic: "أنا", translit: "ana" },
-      { category: "Pronouns", front: "you (m)", arabic: "إنت", translit: "enta" },
-      { category: "Pronouns", front: "you (f)", arabic: "إنتِ", translit: "ente" },
-      { category: "Pronouns", front: "he", arabic: "هو", translit: "howwe" },
-      { category: "Pronouns", front: "she", arabic: "هي", translit: "heyye" },
-      { category: "Pronouns", front: "we", arabic: "نحنا", translit: "nehna" },
-      { category: "Pronouns", front: "you (pl)", arabic: "إنتو", translit: "ento" },
-      { category: "Pronouns", front: "they", arabic: "هني", translit: "henne" },
-
-      // 8. Everyday Phrases
-      { category: "Everyday", front: "How are you today? (to m)", arabic: "كيفك اليوم؟", translit: "keefak elyom?" },
-      { category: "Everyday", front: "How are you today? (to f)", arabic: "كيفك اليوم؟", translit: "keefek elyom?" },
-      { category: "Everyday", front: "I'm good (m).", arabic: "منيح", translit: "mneeh" },
-      { category: "Everyday", front: "I'm good (f).", arabic: "منيحة", translit: "mneeha" },
-      { category: "Everyday", front: "My day is good.", arabic: "يومي منيح", translit: "yomi mneeh" },
-      { category: "Everyday", front: "Just a second.", arabic: "لحظة", translit: "lahza" },
-      { category: "Everyday", front: "only / just / but", arabic: "بس", translit: "bas" },
-
-      // 9. Feelings & adjectives
-      { category: "Feelings", front: "hungry (m)", arabic: "جوعان", translit: "jouaan" },
-      { category: "Feelings", front: "hungry (f)", arabic: "جوعانة", translit: "jouaaneh" },
-      { category: "Feelings", front: "thirsty (m)", arabic: "عطشان", translit: "atshan" },
-      { category: "Feelings", front: "thirsty (f)", arabic: "عطشانة", translit: "atshaneh" },
-      { category: "Feelings", front: "tired (m)", arabic: "تعبان", translit: "taaban" },
-      { category: "Feelings", front: "tired (f)", arabic: "تعبانة", translit: "taabaneh" },
-      { category: "Feelings", front: "cold (feeling, m)", arabic: "بردان", translit: "bardan" },
-      { category: "Feelings", front: "cold (feeling, f)", arabic: "بردانة", translit: "bardaneh" },
-      { category: "Feelings", front: "hot (feeling, m)", arabic: "مشوب", translit: "mashoob" },
-      { category: "Feelings", front: "hot (feeling, f)", arabic: "مشوبة", translit: "mashoobeh" },
-      { category: "Feelings", front: "happy (m)", arabic: "مبسوط", translit: "mabsout" },
-      { category: "Feelings", front: "happy (f)", arabic: "مبسوطة", translit: "mabsouta" },
-      { category: "Feelings", front: "sad (m)", arabic: "زعلان", translit: "zaalan" },
-      { category: "Feelings", front: "sad (f)", arabic: "زعلانة", translit: "zaalaneh" },
-      { category: "Feelings", front: "sick (m)", arabic: "مريض", translit: "mareed" },
-      { category: "Feelings", front: "sick (f)", arabic: "مريضة", translit: "mareeda" },
-      { category: "Feelings", front: "I am hungry (m)", arabic: "أنا جوعان", translit: "ana jouaan" },
-      { category: "Feelings", front: "I am tired (f)", arabic: "أنا تعبانة", translit: "ana taabaneh" },
-
-      // 10. Verbs: want / like / need
-      { category: "Verbs", front: "I want", arabic: "بدي", translit: "bedde" },
-      { category: "Verbs", front: "you want (m)", arabic: "بدك", translit: "bedak" },
-      { category: "Verbs", front: "you want (f)", arabic: "بدِك", translit: "bedek" },
-      { category: "Verbs", front: "he wants", arabic: "بده", translit: "bedo" },
-      { category: "Verbs", front: "she wants", arabic: "بدها", translit: "beda" },
-      { category: "Verbs", front: "I like / I love", arabic: "بحب", translit: "behebb" },
-      { category: "Verbs", front: "I need", arabic: "لازم", translit: "lazem" },
-      { category: "Verbs", front: "I want coffee.", arabic: "بدي قهوة", translit: "bedde ahwe" },
-      { category: "Verbs", front: "I like Beirut.", arabic: "بحب بيروت", translit: "behebb Beirut" },
-
-      // Time of Day
+      /* TIME OF DAY */
       { category: "Time of Day", front: "in the morning", arabic: "الصبح", translit: "el-sobh" },
       { category: "Time of Day", front: "at noon", arabic: "الظهر", translit: "el-zohor" },
       { category: "Time of Day", front: "in the afternoon", arabic: "بعد الظهر", translit: "baad el-zohor" },
@@ -834,290 +546,135 @@
       { category: "Time of Day", front: "dawn", arabic: "الفجر", translit: "el-fajr" },
       { category: "Time of Day", front: "early morning", arabic: "وشّ الصبح", translit: "wesh el-sobh" },
 
-      // Introductions
-      { category: "Introductions", front: "name", arabic: "اسم", translit: "esm" },
-      { category: "Introductions", front: "What is your name? (to m)", arabic: "شو اسمك؟", translit: "shoo esmak?" },
-      { category: "Introductions", front: "What is your name? (to f)", arabic: "شو اسمِك؟", translit: "shoo esmik?" },
-      { category: "Introductions", front: "My name is Ali.", arabic: "اسمي علي", translit: "esme Ali" },
+      /* SEASONS */
+      { category: "Seasons", front: "summer", arabic: "صيف", translit: "seif" },
+      { category: "Seasons", front: "winter", arabic: "شتا", translit: "sheta" },
+      { category: "Seasons", front: "spring", arabic: "ربيع", translit: "rabi" },
+      { category: "Seasons", front: "fall", arabic: "خريف", translit: "khareef" },
+
+      /* WEATHER */
+      { category: "Weather", front: "weather", arabic: "الطقس", translit: "el-ta-es" },
+      { category: "Weather", front: "sun", arabic: "شمس", translit: "shamas" },
+      { category: "Weather", front: "rain", arabic: "مطر", translit: "matar" },
+      { category: "Weather", front: "snow", arabic: "تلج", translit: "talj" },
+      { category: "Weather", front: "wind", arabic: "هوا", translit: "hawa" },
+
+      /* INTRODUCTIONS */
+      { category: "Introductions", front: "What is your name? (m)", arabic: "شو اسمك؟", translit: "shoo esmak" },
+      { category: "Introductions", front: "What is your name? (f)", arabic: "شو اسمِك؟", translit: "shoo esmik" },
+      { category: "Introductions", front: "My name is Ali", arabic: "اسمي علي", translit: "esme Ali" },
       { category: "Introductions", front: "How old are you?", arabic: "قديش عمرك؟", translit: "addeesh omrak?" },
-      { category: "Introductions", front: "I am 10.", arabic: "أنا عشرة", translit: "ana ashra" },
-      { category: "Introductions", front: "From which country are you? (to m)", arabic: "من أيّ بلد إنت؟", translit: "men ayya balad enta?" },
-      { category: "Introductions", front: "From which country are you? (to f)", arabic: "من أيّ بلد إنتِ؟", translit: "men ayya balad ente?" },
-      { category: "Introductions", front: "I am from Germany.", arabic: "أنا من ألمانيا", translit: "ana men Almaniya" },
+      { category: "Introductions", front: "I am 10", arabic: "أنا عشرة", translit: "ana ashra" },
+      { category: "Introductions", front: "From which country (m)", arabic: "من أيّ بلد إنت؟", translit: "men ayya balad enta" },
+      { category: "Introductions", front: "From which country (f)", arabic: "من أيّ بلد إنتِ؟", translit: "men ayya balad ente" },
+      { category: "Introductions", front: "I am from Germany", arabic: "أنا من ألمانيا", translit: "ana men Almaniya" },
 
-      // Numbers 0–12
-      { category: "Numbers", front: "zero (0)", arabic: "صفر", translit: "sefr" },
-      { category: "Numbers", front: "one (1)", arabic: "واحد", translit: "wahed" },
-      { category: "Numbers", front: "two (2)", arabic: "تنَين", translit: "tneen" },
-      { category: "Numbers", front: "three (3)", arabic: "تلاتة", translit: "talateh" },
-      { category: "Numbers", front: "four (4)", arabic: "أربعة", translit: "arbaa" },
-      { category: "Numbers", front: "five (5)", arabic: "خمسة", translit: "khamse" },
-      { category: "Numbers", front: "six (6)", arabic: "ستّة", translit: "sette" },
-      { category: "Numbers", front: "seven (7)", arabic: "سبعة", translit: "sabaa" },
-      { category: "Numbers", front: "eight (8)", arabic: "تمانة", translit: "tmaneh" },
-      { category: "Numbers", front: "nine (9)", arabic: "تسعة", translit: "tesaa" },
-      { category: "Numbers", front: "ten (10)", arabic: "عشرة", translit: "ashra" },
-      { category: "Numbers", front: "eleven (11)", arabic: "حدعش", translit: "hdaash" },
-      { category: "Numbers", front: "twelve (12)", arabic: "طنَعش", translit: "tnaash" },
+      /* NUMBERS 0–12 */
+      { category: "Numbers", front: "0 — zero", arabic: "صفر", translit: "sefr" },
+      { category: "Numbers", front: "1 — one", arabic: "واحد", translit: "wahed" },
+      { category: "Numbers", front: "2 — two", arabic: "تنين", translit: "tneen" },
+      { category: "Numbers", front: "3 — three", arabic: "تلاتة", translit: "talateh" },
+      { category: "Numbers", front: "4 — four", arabic: "أربعة", translit: "arbaa" },
+      { category: "Numbers", front: "5 — five", arabic: "خمسة", translit: "khamse" },
+      { category: "Numbers", front: "6 — six", arabic: "ستة", translit: "sette" },
+      { category: "Numbers", front: "7 — seven", arabic: "سبعة", translit: "sabaa" },
+      { category: "Numbers", front: "8 — eight", arabic: "تمانة", translit: "tmaneh" },
+      { category: "Numbers", front: "9 — nine", arabic: "تسعة", translit: "tesaa" },
+      { category: "Numbers", front: "10 — ten", arabic: "عشرة", translit: "ashra" },
+      { category: "Numbers", front: "11 — eleven", arabic: "حدعش", translit: "hdaash" },
+      { category: "Numbers", front: "12 — twelve", arabic: "طنعش", translit: "tnaash" },
 
-      // Numbers (Time forms)
-      { category: "Numbers (Time)", front: "one (for time)", arabic: "وحدة", translit: "wahde" },
-      { category: "Numbers (Time)", front: "two (for time)", arabic: "تنتين", translit: "tntein" },
+      /* NUMBERS FOR TIME (wahde / tntein) */
+      { category: "Numbers (Time)", front: "one (time)", arabic: "وحدة", translit: "wahde" },
+      { category: "Numbers (Time)", front: "two (time)", arabic: "تنتين", translit: "tntein" },
 
-      // Telling Time (minutes & examples)
-      { category: "Telling Time", front: "5 (minutes)", arabic: "خمسة", translit: "khamse" },
-      { category: "Telling Time", front: "10 (minutes)", arabic: "عشرة", translit: "ashra" },
+      /* TELLING TIME (MINUTES) */
+      { category: "Telling Time", front: "5 minutes", arabic: "خمسة", translit: "khamse" },
+      { category: "Telling Time", front: "10 minutes", arabic: "عشرة", translit: "ashra" },
       { category: "Telling Time", front: "15 (quarter)", arabic: "ربع", translit: "rebaa" },
       { category: "Telling Time", front: "20 (third)", arabic: "تلت", translit: "telt" },
       { category: "Telling Time", front: "25", arabic: "تلت وخمسة", translit: "telt w khamse" },
       { category: "Telling Time", front: "30 (half)", arabic: "نص", translit: "noss" },
       { category: "Telling Time", front: "35", arabic: "خمسة وتلت", translit: "khamse w telt" },
-      { category: "Telling Time", front: "40", arabic: "الأربعين", translit: "el-arbaeen" },
-      { category: "Telling Time", front: "45 (minus a quarter)", arabic: "إلا ربع", translit: "ella rebaa" },
-      { category: "Telling Time", front: "50 (minus ten)", arabic: "إلا عشرة", translit: "ella ashra" },
-      { category: "Telling Time", front: "It is one o'clock.", arabic: "الساعة وحدة", translit: "es-saa-a wahde" },
-      { category: "Telling Time", front: "It is two o'clock.", arabic: "الساعة تنتين", translit: "es-saa-a tntein" },
-      { category: "Telling Time", front: "7:40 (eight minus third)", arabic: "تمانة إلا تلت", translit: "tmaneh ella telt" },
+      { category: "Telling Time", front: "40", arabic: "إلا تلت", translit: "ella telt" },
+      { category: "Telling Time", front: "45", arabic: "إلا ربع", translit: "ella rebaa" },
+      { category: "Telling Time", front: "50", arabic: "إلا عشرة", translit: "ella ashra" },
 
-      // Time Questions
-      { category: "Time Questions", front: "What time is it?", arabic: "قدّيش الساعة؟", translit: "addeesh es-saa-a?" },
-      { category: "Time Questions", front: "What time is it now?", arabic: "قدّيش الساعة هلّق؟", translit: "addeesh es-saa-a halla?" },
-      { category: "Time Questions", front: "What's the time now?", arabic: "قدّيش الوقت هلّق؟", translit: "addeesh el-waet halla?" },
+      /* FULL TIME EXAMPLES */
+      { category: "Telling Time", front: "1:00", arabic: "الساعة وحدة", translit: "es-saa-a wahde" },
+      { category: "Telling Time", front: "2:00", arabic: "الساعة تنتين", translit: "es-saa-a tntein" },
+      { category: "Telling Time", front: "7:40", arabic: "تمانة إلا تلت", translit: "tmaneh ella telt" },
 
-      // Small Talk
-      { category: "Small Talk", front: "What's up? / What's the news?", arabic: "شو الأخبار؟", translit: "shoo l-akhbar?" },
-      { category: "Small Talk", front: "Nothing new.", arabic: "ما في شي جديد", translit: "ma fi shi jdeed" },
+      /* TIME QUESTIONS */
+      { category: "Time Questions", front: "What time is it?", arabic: "قديش الساعة؟", translit: "addeesh es-saa-a?" },
+      { category: "Time Questions", front: "What time is it now?", arabic: "قديش الساعة هلّق؟", translit: "addeesh es-saa-a halla?" },
+      { category: "Time Questions", front: "What's the time now?", arabic: "قديش الوقت هلّق؟", translit: "addeesh el-waet halla?" },
 
-      // Misc
+      /* SMALL TALK */
+      { category: "Small Talk", front: "What's up?", arabic: "شو الأخبار؟", translit: "shoo l-akhbar?" },
+      { category: "Small Talk", front: "Nothing new", arabic: "ما في شي جديد", translit: "ma fi shi jdeed" },
+
+      /* MISC */
       { category: "Misc", front: "number", arabic: "رقم", translit: "ra2am" },
       { category: "Misc", front: "numbers", arabic: "أرقام", translit: "ar2aam" },
 
-      // Bonus Phrases
-      { category: "Bonus Phrases", front: "Usually I wake up early in the morning.", arabic: "عادةً بصحى وشّ الصبح.", translit: "aadatan bseha wesh es-sobh." },
-      { category: "Bonus Phrases", front: "I like studying Arabic at night.", arabic: "بحب إدرس عربي بالليل.", translit: "behebb edros arabi bel-leel." },
-      { category: "Bonus Phrases", front: "These days I am very tired but happy.", arabic: "هالأيام كتير تعبان بس مبسوط.", translit: "hal-ayyam kteer taabaan bas mabsout." },
-      { category: "Bonus Phrases", front: "Sometimes the weather in Beirut changes fast.", arabic: "أوقات الجو ببيروت بيتغيّر بسرعة.", translit: "aw2aat el-jaw bi Beirut byetghayyar b-seraa." },
-      { category: "Bonus Phrases", front: "I'm trying to speak only Arabic in class.", arabic: "عم جرّب إحكي بس عربي بالصف.", translit: "am jarrib ehki bas arabi bel-saff." },
-      { category: "Bonus Phrases", front: "Your explanations are always very clear.", arabic: "شرحك دايمًا كتير واضح.", translit: "sharhak dayman kteer waadeh." },
-      { category: "Bonus Phrases", front: "I started learning Arabic because I love Lebanon.", arabic: "بلّشت إتعلّم عربي لأنّي بحب لبنان.", translit: "ballasht etallam arabi laanni behebb Lebnaan." }
+      /* BONUS PHRASES */
+      { category: "Bonus Phrases", front: "I like studying Arabic at night", arabic: "بحب إدرس عربي بالليل", translit: "behebb edros arabi bel-leel" },
+      { category: "Bonus Phrases", front: "I'm trying to speak only Arabic in class", arabic: "عم جرّب إحكي بس عربي بالصف", translit: "am jarrib ehki bas arabi bel-saff" },
+      { category: "Bonus Phrases", front: "Your explanations are very clear", arabic: "شرحك دايمًا كتير واضح", translit: "sharhak dayman kteer waadeh" }
     ];
 
-    // ---- STATE & STORAGE ----
-    const STORAGE_KNOWN = "lev_flashcards_known_v1";
-    const STORAGE_STREAK = "lev_flashcards_streak_v1";
-    const STORAGE_THEME = "arabic_for_jon_theme";
-
-    function cardId(card) {
-      return `${card.category}|${card.front}|${card.arabic}`;
-    }
-
-    function loadKnownSet() {
-      try {
-        const raw = localStorage.getItem(STORAGE_KNOWN);
-        if (!raw) return new Set();
-        return new Set(JSON.parse(raw));
-      } catch {
-        return new Set();
-      }
-    }
-
-    function saveKnownSet(set) {
-      localStorage.setItem(STORAGE_KNOWN, JSON.stringify(Array.from(set)));
-    }
-
-    function loadStreak() {
-      try {
-        const raw = localStorage.getItem(STORAGE_STREAK);
-        return raw ? JSON.parse(raw) : { streak: 0, lastDay: null };
-      } catch {
-        return { streak: 0, lastDay: null };
-      }
-    }
-
-    function saveStreak(s) {
-      localStorage.setItem(STORAGE_STREAK, JSON.stringify(s));
-    }
-
-    let knownSet = loadKnownSet();
-    let streakData = loadStreak();
-
+    /* ---- STATE ---- */
+    let known = JSON.parse(localStorage.getItem("known") || "[]");
+    let index = 0;
     let showFront = true;
-    let currentIndex = 0;
-    let filteredIndices = [];
 
-    // quiz
-    let quizDeck = [];
-    let quizIndex = 0;
-    let quizScore = 0;
-
-    // ---- DOM ----
-    const counterEl = document.getElementById("counter");
+    /* ---- DOM REFERENCES ---- */
     const cardEl = document.getElementById("card");
-    const cardContentEl = document.getElementById("card-content");
-    const categoryPillEl = document.getElementById("category-pill");
+    const contentEl = document.getElementById("card-content");
+    const categoryEl = document.getElementById("category-pill");
     const sideLabelEl = document.getElementById("side-label");
     const knownPillEl = document.getElementById("known-pill");
+
+    const counterEl = document.getElementById("counter");
     const prevBtn = document.getElementById("prev-btn");
     const nextBtn = document.getElementById("next-btn");
     const flipBtn = document.getElementById("flip-btn");
     const shuffleBtn = document.getElementById("shuffle-btn");
     const toggleKnownBtn = document.getElementById("toggle-known-btn");
+
     const categoryFilterEl = document.getElementById("category-filter");
     const statusFilterEl = document.getElementById("status-filter");
-    const streakLabel = document.getElementById("streak-label");
+
+    const listView = document.getElementById("list-view");
+    const cardsView = document.getElementById("cards-view");
+    const quizView = document.getElementById("quiz-view");
 
     const tabCards = document.getElementById("tab-cards");
     const tabList = document.getElementById("tab-list");
     const tabQuiz = document.getElementById("tab-quiz");
-    const cardsView = document.getElementById("cards-view");
-    const listView = document.getElementById("list-view");
-    const quizView = document.getElementById("quiz-view");
 
-    const listCategoryFilterEl = document.getElementById("list-category-filter");
-    const listSearchEl = document.getElementById("list-search");
-    const listBodyEl = document.getElementById("list-body");
+    /* ---- RENDER CARD ---- */
+    function render() {
+      const card = cards[index];
 
-    const quizPanel = document.getElementById("quiz-panel");
-    const quizQuestion = document.getElementById("quiz-question");
-    const quizOptions = document.getElementById("quiz-options");
-    const quizProgress = document.getElementById("quiz-progress");
-    const quizResult = document.getElementById("quiz-result");
-    const startQuizBtn = document.getElementById("start-quiz-btn");
-    const resetQuizBtn = document.getElementById("reset-quiz-btn");
-    const hintText = document.getElementById("hint-text");
+      /* filter */
+      const total = cards.length;
+      counterEl.textContent = `${index + 1} / ${total}`;
+      categoryEl.textContent = card.category;
 
-    const themeButtons = document.querySelectorAll(".theme-btn");
-    const bodyEl = document.body;
+      /* known pill */
+      knownPillEl.style.display = known.includes(index) ? "block" : "none";
+      toggleKnownBtn.textContent = known.includes(index) ? "Mark Unknown" : "Mark Known";
 
-    // ---- THEME LOGIC ----
-    const THEMES = ["minimal", "colorful", "dark"];
-
-    function applyTheme(theme) {
-      if (!THEMES.includes(theme)) theme = "colorful";
-      THEMES.forEach(t => bodyEl.classList.remove("theme-" + t));
-      bodyEl.classList.add("theme-" + theme);
-      localStorage.setItem(STORAGE_THEME, theme);
-      themeButtons.forEach(btn => {
-        const t = btn.getAttribute("data-theme");
-        if (t === theme) {
-          btn.classList.add("theme-active");
-        } else {
-          btn.classList.remove("theme-active");
-        }
-      });
-    }
-
-    function initTheme() {
-      let saved = null;
-      try {
-        saved = localStorage.getItem(STORAGE_THEME);
-      } catch {}
-      if (!saved || !THEMES.includes(saved)) {
-        saved = "colorful";
-      }
-      applyTheme(saved);
-      themeButtons.forEach(btn => {
-        btn.addEventListener("click", () => {
-          const t = btn.getAttribute("data-theme");
-          applyTheme(t);
-        });
-      });
-    }
-
-    // ---- CATEGORY FILTER UI ----
-    const categorySet = new Set(cards.map(c => c.category));
-    const categories = ["All"].concat(Array.from(categorySet).sort());
-    categories.forEach(cat => {
-      const opt = document.createElement("option");
-      opt.value = cat;
-      opt.textContent = cat;
-      categoryFilterEl.appendChild(opt);
-    });
-    categoryFilterEl.value = "All";
-
-    categories.forEach(cat => {
-      const opt = document.createElement("option");
-      opt.value = cat;
-      opt.textContent = cat;
-      listCategoryFilterEl.appendChild(opt);
-    });
-    listCategoryFilterEl.value = "All";
-
-    function recomputeFilteredIndices() {
-      const catFilter = categoryFilterEl.value;
-      const statusFilter = statusFilterEl.value;
-
-      let indices = [];
-      cards.forEach((card, idx) => {
-        if (catFilter !== "All" && card.category !== catFilter) return;
-        const id = cardId(card);
-        const isKnown = knownSet.has(id);
-        if (statusFilter === "known" && !isKnown) return;
-        if (statusFilter === "unknown" && isKnown) return;
-        indices.push(idx);
-      });
-
-      filteredIndices = indices;
-
-      if (filteredIndices.length === 0) {
-        currentIndex = 0;
-      } else if (!filteredIndices.includes(currentIndex)) {
-        currentIndex = filteredIndices[0];
-      }
-    }
-
-    function getFilteredPosition() {
-      const pos = filteredIndices.indexOf(currentIndex);
-      return pos === -1 ? 0 : pos;
-    }
-
-    function renderStreak() {
-      const today = new Date();
-      const dayStr = today.toISOString().slice(0, 10);
-      if (streakData.lastDay !== dayStr) {
-        const yesterday = new Date(today.getTime() - 86400000).toISOString().slice(0,10);
-        if (streakData.lastDay === yesterday) {
-          streakData.streak += 1;
-        } else {
-          streakData.streak = 1;
-        }
-        streakData.lastDay = dayStr;
-        saveStreak(streakData);
-      }
-      streakLabel.textContent = `🔥 ${streakData.streak}-day streak`;
-    }
-
-    function renderCard() {
-      recomputeFilteredIndices();
-
-      if (filteredIndices.length === 0) {
-        cardContentEl.innerHTML = "<div style='font-size:0.9rem;color:var(--text-muted);'>No cards match this filter.</div>";
-        counterEl.textContent = "0 / 0";
-        categoryPillEl.textContent = "None";
-        sideLabelEl.textContent = showFront ? "Front · EN" : "Back · AR";
-        knownPillEl.style.display = "none";
-        toggleKnownBtn.textContent = "Mark as Known ✅";
-        return;
-      }
-
-      const card = cards[currentIndex];
-      const position = getFilteredPosition();
-      counterEl.textContent = `${position + 1} / ${filteredIndices.length}`;
-      categoryPillEl.textContent = card.category || "Card";
-
-      const id = cardId(card);
-      const isKnown = knownSet.has(id);
-      knownPillEl.style.display = isKnown ? "block" : "none";
-      toggleKnownBtn.textContent = isKnown ? "Mark as Unknown ◻︎" : "Mark as Known ✅";
-
-      cardContentEl.innerHTML = "";
+      /* content */
+      contentEl.innerHTML = "";
       if (showFront) {
         sideLabelEl.textContent = "Front · EN";
         const en = document.createElement("div");
         en.className = "english";
         en.textContent = card.front;
-        cardContentEl.appendChild(en);
-        hintText.textContent = "Tap card / Flip to see Arabic · اضغط / إضغطي لتقليب البطاقة";
+        contentEl.appendChild(en);
       } else {
         sideLabelEl.textContent = "Back · AR";
         const ar = document.createElement("div");
@@ -1126,302 +683,193 @@
         const tr = document.createElement("div");
         tr.className = "translit";
         tr.textContent = card.translit;
-        cardContentEl.appendChild(ar);
-        cardContentEl.appendChild(tr);
-        hintText.textContent = "Tap card / Flip to go back · جرّب تنطقها بصوت عالي";
+        contentEl.appendChild(ar);
+        contentEl.appendChild(tr);
       }
     }
 
-    function moveNext() {
-      recomputeFilteredIndices();
-      if (filteredIndices.length === 0) return;
-      const pos = getFilteredPosition();
-      const nextPos = (pos + 1) % filteredIndices.length;
-      currentIndex = filteredIndices[nextPos];
-      showFront = true;
-      renderCard();
-    }
+    /* ---- BUTTONS ---- */
+    flipBtn.onclick = () => { showFront = !showFront; render(); };
+    nextBtn.onclick = () => { index = (index + 1) % cards.length; showFront = true; render(); };
+    prevBtn.onclick = () => { index = (index - 1 + cards.length) % cards.length; showFront = true; render(); };
 
-    function movePrev() {
-      recomputeFilteredIndices();
-      if (filteredIndices.length === 0) return;
-      const pos = getFilteredPosition();
-      const prevPos = (pos - 1 + filteredIndices.length) % filteredIndices.length;
-      currentIndex = filteredIndices[prevPos];
-      showFront = true;
-      renderCard();
-    }
+    toggleKnownBtn.onclick = () => {
+      if (known.includes(index)) {
+        known = known.filter(i => i !== index);
+      } else {
+        known.push(index);
+      }
+      localStorage.setItem("known", JSON.stringify(known));
+      render();
+    };
 
-    function flipCard() {
-      showFront = !showFront;
-      renderCard();
-    }
-
-    function shuffleDeck() {
+    shuffleBtn.onclick = () => {
       for (let i = cards.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [cards[i], cards[j]] = [cards[j], cards[i]];
       }
+      index = 0;
       showFront = true;
-      currentIndex = 0;
-      renderCard();
-      renderWordList();
-    }
+      render();
+    };
 
-    function toggleKnown() {
-      const card = cards[currentIndex];
-      const id = cardId(card);
-      if (knownSet.has(id)) {
-        knownSet.delete(id);
-      } else {
-        knownSet.add(id);
-      }
-      saveKnownSet(knownSet);
-      renderCard();
-      renderWordList();
-    }
-
-    // ---- WORD LIST ----
-    function normalize(str) {
-      return (str || "").toString().toLowerCase();
-    }
-
-    function renderWordList() {
-      const catFilter = listCategoryFilterEl.value;
-      const search = normalize(listSearchEl.value);
-
-      let indices = cards.map((c, i) => i);
-      if (catFilter !== "All") {
-        indices = indices.filter(i => cards[i].category === catFilter);
-      }
-      if (search) {
-        indices = indices.filter(i =>
-          normalize(cards[i].front).includes(search)
-        );
-      }
-
-      indices.sort((a, b) => {
-        const fa = normalize(cards[a].front);
-        const fb = normalize(cards[b].front);
-        if (fa < fb) return -1;
-        if (fa > fb) return 1;
-        return 0;
-      });
-
-      listBodyEl.innerHTML = "";
-      if (indices.length === 0) {
-        const div = document.createElement("div");
-        div.style.fontSize = "0.85rem";
-        div.style.color = "var(--text-muted)";
-        div.textContent = "No words match this filter.";
-        listBodyEl.appendChild(div);
-        return;
-      }
-
-      indices.forEach(idx => {
-        const card = cards[idx];
-        const id = cardId(card);
-        const isKnown = knownSet.has(id);
-
-        const item = document.createElement("div");
-        item.className = "list-item";
-
-        const main = document.createElement("div");
-        main.className = "list-row-main";
-
-        const left = document.createElement("div");
-        const en = document.createElement("div");
-        en.className = "list-en";
-        en.textContent = card.front;
-        const tr = document.createElement("div");
-        tr.className = "list-tr";
-        tr.textContent = card.translit;
-        left.appendChild(en);
-        left.appendChild(tr);
-
-        const right = document.createElement("div");
-        right.className = "list-ar";
-        right.textContent = card.arabic;
-
-        main.appendChild(left);
-        main.appendChild(right);
-
-        const metaRow = document.createElement("div");
-        metaRow.className = "list-meta";
-
-        const catBadge = document.createElement("span");
-        catBadge.className = "badge-category";
-        catBadge.textContent = card.category;
-
-        metaRow.appendChild(catBadge);
-
-        if (isKnown) {
-          const knownBadge = document.createElement("span");
-          knownBadge.className = "badge-known";
-          knownBadge.textContent = "Known";
-          metaRow.appendChild(knownBadge);
-        } else {
-          const spacer = document.createElement("span");
-          spacer.textContent = "";
-          metaRow.appendChild(spacer);
-        }
-
-        item.appendChild(main);
-        item.appendChild(metaRow);
-
-        item.addEventListener("click", () => {
-          currentIndex = idx;
-          showFront = true;
-          showCardsTab();
-          renderCard();
-        });
-
-        listBodyEl.appendChild(item);
-      });
-    }
-
-    // ---- QUIZ ----
-    function buildQuizDeck() {
-      const baseIndices = [...Array(cards.length).keys()];
-      for (let i = baseIndices.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [baseIndices[i], baseIndices[j]] = [baseIndices[j], baseIndices[i]];
-      }
-      quizDeck = baseIndices.slice(0, 15);
-      quizIndex = 0;
-      quizScore = 0;
-    }
-
-    function renderQuizQuestion() {
-      if (quizDeck.length === 0 || quizIndex >= quizDeck.length) {
-        quizPanel.style.display = "flex";
-        quizQuestion.textContent = "Quiz finished!";
-        quizOptions.innerHTML = "";
-        quizProgress.textContent = "";
-        quizResult.textContent = `Score: ${quizScore}/${quizDeck.length}`;
-        return;
-      }
-      quizPanel.style.display = "flex";
-      const idx = quizDeck[quizIndex];
-      const card = cards[idx];
-      quizQuestion.textContent = `What is the Arabic for: “${card.front}”?`;
-      const correct = card.arabic;
-
-      const others = [];
-      while (others.length < 3) {
-        const r = Math.floor(Math.random() * cards.length);
-        if (r !== idx && !others.includes(r)) others.push(r);
-      }
-      const options = [correct, ...others.map(i => cards[i].arabic)];
-      for (let i = options.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [options[i], options[j]] = [options[j], options[i]];
-      }
-
-      quizOptions.innerHTML = "";
-      options.forEach(opt => {
-        const div = document.createElement("div");
-        div.className = "quiz-option";
-        div.textContent = opt;
-        div.addEventListener("click", () => {
-          if (div.dataset.clicked) return;
-          div.dataset.clicked = "1";
-          if (opt === correct) {
-            div.classList.add("correct");
-            quizScore++;
-            quizResult.textContent = "Correct ✅";
-          } else {
-            div.classList.add("wrong");
-            quizResult.textContent = `Answer: ${correct}`;
-          }
-          setTimeout(() => {
-            quizIndex++;
-            quizResult.textContent = "";
-            renderQuizQuestion();
-          }, 800);
-        });
-        quizOptions.appendChild(div);
-      });
-
-      quizProgress.textContent = `${quizIndex + 1} / ${quizDeck.length}`;
-    }
-
-    function startQuiz() {
-      buildQuizDeck();
-      renderQuizQuestion();
-    }
-
-    function resetQuiz() {
-      quizDeck = [];
-      quizIndex = 0;
-      quizScore = 0;
-      quizPanel.style.display = "none";
-      quizQuestion.textContent = "";
-      quizOptions.innerHTML = "";
-      quizProgress.textContent = "";
-      quizResult.textContent = "";
-    }
-
-    // ---- TABS ----
-    function showCardsTab() {
-      tabCards.classList.add("active");
-      tabList.classList.remove("active");
-      tabQuiz.classList.remove("active");
+    /* ---- TABS ---- */
+    tabCards.onclick = () => {
       cardsView.style.display = "block";
       listView.style.display = "none";
       quizView.style.display = "none";
-    }
+      tabCards.classList.add("active");
+      tabList.classList.remove("active");
+      tabQuiz.classList.remove("active");
+    };
 
-    function showListTab() {
+    tabList.onclick = () => {
+      cardsView.style.display = "none";
+      listView.style.display = "block";
+      quizView.style.display = "none";
       tabList.classList.add("active");
       tabCards.classList.remove("active");
       tabQuiz.classList.remove("active");
-      cardsView.style.display = "none";
-      listView.style.display = "flex";
-      quizView.style.display = "none";
-      renderWordList();
-    }
+      renderList();
+    };
 
-    function showQuizTab() {
-      tabQuiz.classList.add("active");
-      tabCards.classList.remove("active");
-      tabList.classList.remove("active");
+    tabQuiz.onclick = () => {
       cardsView.style.display = "none";
       listView.style.display = "none";
       quizView.style.display = "block";
+      tabQuiz.classList.add("active");
+      tabCards.classList.remove("active");
+      tabList.classList.remove("active");
+      startQuiz();
+    };
+
+    /* ---- WORD LIST ---- */
+    const listCategoryFilter = document.getElementById("list-category-filter");
+    const listBody = document.getElementById("list-body");
+    const listSearch = document.getElementById("list-search");
+
+    /* fill category filters */
+    const categories = [...new Set(cards.map(c => c.category))].sort();
+    categoryFilterEl.innerHTML = `<option value="All">All</option>` + categories.map(c=>`<option value="${c}">${c}</option>`).join("");
+    listCategoryFilter.innerHTML = `<option value="All">All</option>` + categories.map(c=>`<option value="${c}">${c}</option>`).join("");
+
+    function renderList() {
+      const cat = listCategoryFilter.value;
+      const term = listSearch.value.toLowerCase();
+
+      listBody.innerHTML = "";
+
+      cards
+        .map((card, i) => ({...card, i}))
+        .filter(c => cat==="All" || c.category===cat)
+        .filter(c => c.front.toLowerCase().includes(term))
+        .sort((a,b)=>a.front.localeCompare(b.front))
+        .forEach(item => {
+          const div = document.createElement("div");
+          div.className = "list-item";
+          div.innerHTML = `
+            <div class="list-row-main">
+              <div>
+                <div class="list-en">${item.front}</div>
+                <div class="list-tr">${item.translit}</div>
+              </div>
+              <div class="list-ar">${item.arabic}</div>
+            </div>
+            <div class="list-meta">
+              <span class="badge-category">${item.category}</span>
+              ${known.includes(item.i) ? `<span class="badge-known">Known</span>` : ``}
+            </div>
+          `;
+          div.onclick = () => {
+            index = item.i;
+            showFront = true;
+            tabCards.onclick();
+            render();
+          };
+          listBody.appendChild(div);
+        });
     }
 
-    // ---- EVENT BINDINGS ----
-    cardEl.addEventListener("click", flipCard);
-    flipBtn.addEventListener("click", flipCard);
-    nextBtn.addEventListener("click", moveNext);
-    prevBtn.addEventListener("click", movePrev);
-    shuffleBtn.addEventListener("click", shuffleDeck);
-    toggleKnownBtn.addEventListener("click", toggleKnown);
-    categoryFilterEl.addEventListener("change", () => {
-      showFront = true;
-      renderCard();
+    listCategoryFilter.onchange = renderList;
+    listSearch.oninput = renderList;
+
+    /* ---- QUIZ ---- */
+    function startQuiz() {
+      const quizPanel = document.getElementById("quiz-panel");
+      const quizQuestion = document.getElementById("quiz-question");
+      const quizOptions = document.getElementById("quiz-options");
+      const quizProgress = document.getElementById("quiz-progress");
+      const quizResult = document.getElementById("quiz-result");
+
+      quizPanel.style.display = "flex";
+      let order = [...Array(cards.length).keys()];
+      order.sort(()=>Math.random()-0.5);
+      order = order.slice(0, 10);
+      let qi = 0;
+
+      function ask() {
+        if (qi >= order.length) {
+          quizQuestion.textContent = "Quiz complete!";
+          quizOptions.innerHTML = "";
+          quizResult.textContent = "";
+          quizProgress.textContent = "";
+          return;
+        }
+
+        const idx = order[qi];
+        const c = cards[idx];
+        quizQuestion.textContent = `Arabic for: ${c.front}`;
+        quizProgress.textContent = `${qi+1} / ${order.length}`;
+
+        const answers = [c.arabic];
+        while (answers.length < 4) {
+          const r = cards[Math.floor(Math.random()*cards.length)].arabic;
+          if (!answers.includes(r)) answers.push(r);
+        }
+        answers.sort(()=>Math.random()-0.5);
+
+        quizOptions.innerHTML = "";
+        answers.forEach(ans=>{
+          const btn = document.createElement("div");
+          btn.className = "quiz-option";
+          btn.textContent = ans;
+          btn.onclick = () => {
+            if (ans === c.arabic) {
+              btn.classList.add("correct");
+              setTimeout(()=>{ qi++; ask(); }, 600);
+            } else {
+              btn.classList.add("wrong");
+            }
+          };
+          quizOptions.appendChild(btn);
+        });
+      }
+
+      ask();
+    }
+
+    /* ---- THEME ---- */
+    const themeBtns = document.querySelectorAll(".theme-btn");
+
+    function applyTheme(t) {
+      document.body.classList.remove("theme-minimal","theme-colorful","theme-dark");
+      document.body.classList.add(`theme-${t}`);
+      localStorage.setItem("app-theme", t);
+      themeBtns.forEach(btn=>{
+        btn.classList.toggle("theme-active", btn.dataset.theme===t);
+      });
+    }
+
+    themeBtns.forEach(btn=>{
+      btn.onclick = () => applyTheme(btn.dataset.theme);
     });
-    statusFilterEl.addEventListener("change", () => {
-      showFront = true;
-      renderCard();
-    });
 
-    tabCards.addEventListener("click", showCardsTab);
-    tabList.addEventListener("click", showListTab);
-    tabQuiz.addEventListener("click", showQuizTab);
+    const savedTheme = localStorage.getItem("app-theme") || "colorful";
+    applyTheme(savedTheme);
 
-    listCategoryFilterEl.addEventListener("change", renderWordList);
-    listSearchEl.addEventListener("input", renderWordList);
+    /* ---- INIT ---- */
+    render();
 
-    startQuizBtn.addEventListener("click", startQuiz);
-    resetQuizBtn.addEventListener("click", resetQuiz);
-
-    // init
-    initTheme();
-    renderStreak();
-    renderCard();
-    renderWordList();
   </script>
 </body>
 </html>
