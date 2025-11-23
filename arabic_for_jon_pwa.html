@@ -420,6 +420,25 @@
       font-weight: 600;
     }
 
+    /* FIX — improve dark mode card readability */
+body.theme-dark .english,
+body.theme-dark .arabic,
+body.theme-dark .translit,
+body.theme-dark .hint {
+  color: #f9fafb !important;
+}
+
+body.theme-dark .side-label {
+  color: #f2c27b !important;
+  border-color: #f2c27b !important;
+}
+
+body.theme-dark .pill {
+  color: #9ca3af !important;
+  border-color: rgba(148, 163, 184, 0.5) !important;
+}
+
+
   </style>
 </head>
 
@@ -633,6 +652,8 @@
     const cardEl = document.getElementById("card");
     const contentEl = document.getElementById("card-content");
     const categoryEl = document.getElementById("category-pill");
+    /* FIX — Tap card to flip */
+cardEl.onclick = () => { showFront = !showFront; render(); };
     const sideLabelEl = document.getElementById("side-label");
     const knownPillEl = document.getElementById("known-pill");
 
