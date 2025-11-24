@@ -538,6 +538,146 @@ body.theme-dark .pill {
     /* ---- FULL CARD DATA ---- */
     const cards = [
 
+
+      // 2. Time & Clock Language
+      { category: "Time Units", front: "time", arabic: "وقت", translit: "waet" },
+      { category: "Time Units", front: "hour / o'clock", arabic: "ساعة", translit: "saa-a" },
+      { category: "Time Units", front: "hours", arabic: "ساعات", translit: "saa-aat" },
+      { category: "Time Units", front: "minute", arabic: "دقيقة", translit: "da-ee-a" },
+      { category: "Time Units", front: "minutes", arabic: "دقايق", translit: "da-aa-yek" },
+      { category: "Time Units", front: "second", arabic: "ثانية", translit: "saniyeh" },
+      { category: "Time Units", front: "seconds", arabic: "ثواني", translit: "tawani" },
+
+      { category: "Fractions", front: "quarter", arabic: "ربع", translit: "rebaa" },
+      { category: "Fractions", front: "third", arabic: "تلت", translit: "telt" },
+      { category: "Fractions", front: "half", arabic: "نص", translit: "noss" },
+      { category: "Fractions", front: "almost", arabic: "تقريبًا", translit: "ta-reeban" },
+      { category: "Fractions", front: "except / minus", arabic: "إلا", translit: "ella" },
+
+      // 3. Seasons
+      { category: "Seasons", front: "season", arabic: "فصل", translit: "fasel" },
+      { category: "Seasons", front: "seasons", arabic: "فصول", translit: "fusoool" },
+      { category: "Seasons", front: "summer", arabic: "صيف", translit: "seif" },
+      { category: "Seasons", front: "winter", arabic: "شتا", translit: "sheta" },
+      { category: "Seasons", front: "spring", arabic: "ربيع", translit: "rabi" },
+      { category: "Seasons", front: "fall / autumn", arabic: "خريف", translit: "khareef" },
+
+      { category: "Seasons Qs", front: "What's your favorite season? (to m)", arabic: "شو فصلك المفضل؟", translit: "shu faslak el-mofaddal?" },
+      { category: "Seasons Qs", front: "What's your favorite season? (to f)", arabic: "شو فصلك المفضل؟", translit: "shu faslek el-mofaddal?" },
+      { category: "Seasons Qs", front: "What is her favorite season?", arabic: "شو فصلها المفضل؟", translit: "shu fasel-ha el-mofaddal?" },
+      { category: "Seasons Qs", front: "What is his favorite season?", arabic: "شو فصله المفضل؟", translit: "shu fasel-o el-mofaddal?" },
+      { category: "Seasons Ans", front: "My favorite season is fall.", arabic: "فصلي المفضل الخريف", translit: "fasle el-mofaddal el-khareef" },
+      { category: "Seasons Ans", front: "Her favorite season is winter.", arabic: "فصلها المفضل الشتا", translit: "fasel-ha el-mofaddal el-sheta" },
+
+      // 4. Weather
+      { category: "Weather", front: "weather", arabic: "الطقس", translit: "el-ta-es" },
+      { category: "Weather", front: "weather", arabic: "الجو", translit: "el-jaw" },
+      { category: "Weather", front: "nice / pleasant", arabic: "حلو", translit: "helou" },
+      { category: "Weather", front: "not nice", arabic: "مش حلو", translit: "mesh helou" },
+      { category: "Weather", front: "very", arabic: "كتير", translit: "kteer" },
+      { category: "Weather", front: "hot (weather)", arabic: "شوب", translit: "shob" },
+      { category: "Weather", front: "cold (weather)", arabic: "برد", translit: "bard" },
+      { category: "Weather", front: "warm", arabic: "دافي", translit: "dafi" },
+      { category: "Weather", front: "sunny", arabic: "مشمس", translit: "mshammes" },
+      { category: "Weather", front: "cloudy", arabic: "مغيم", translit: "mghayyem" },
+      { category: "Weather", front: "rainy", arabic: "ممطر", translit: "momter" },
+      { category: "Weather", front: "snowy", arabic: "مثلّج", translit: "mtallij" },
+
+      { category: "Weather Nouns", front: "sun", arabic: "شمس", translit: "shamas" },
+      { category: "Weather Nouns", front: "rain", arabic: "مطر", translit: "matar" },
+      { category: "Weather Nouns", front: "snow", arabic: "تلج", translit: "talj" },
+      { category: "Weather Nouns", front: "wind / air", arabic: "هوا", translit: "hawa" },
+
+      { category: "Weather Phrases", front: "It's very windy.", arabic: "في كتير هوا", translit: "fi kteer hawa" },
+      { category: "Weather Phrases", front: "How is the weather today?", arabic: "كيف الجو اليوم؟", translit: "keef el-jaw elyom?" },
+      { category: "Weather Phrases", front: "The weather today is nice.", arabic: "الجو اليوم حلو", translit: "el-jaw elyom helou" },
+      { category: "Weather Phrases", front: "The weather today is not nice.", arabic: "الجو اليوم مش حلو", translit: "el-jaw elyom mesh helou" },
+      { category: "Weather Phrases", front: "The weather today is very nice.", arabic: "الجو اليوم كتير حلو", translit: "el-jaw elyom kteer helou" },
+      { category: "Weather Phrases", front: "There is a lot of wind today.", arabic: "في كتير هوا اليوم", translit: "fi kteer hawa elyom" },
+      { category: "Weather Phrases", front: "How is the weather in summer?", arabic: "كيف الجو بالصيف؟", translit: "keef el-jaw b-seif?" },
+      { category: "Weather Phrases", front: "The weather in summer is very hot.", arabic: "الجو بالصيف كتير شوب", translit: "el-jaw b-seif kteer shob" },
+      { category: "Weather Phrases", front: "How is the weather in winter?", arabic: "كيف الجو بالشتا؟", translit: "keef el-jaw b-sheta?" },
+      { category: "Weather Phrases", front: "The weather in winter is cold and snowy.", arabic: "الجو بالشتا برد ومتلج", translit: "el-jaw b-sheta bard w mtallij" },
+      { category: "Weather Phrases", front: "How is the weather in fall?", arabic: "كيف الجو بالخريف؟", translit: "keef el-jaw b-el-khareef?" },
+      { category: "Weather Phrases", front: "How is the weather in spring?", arabic: "كيف الجو بالربيع؟", translit: "keef el-jaw b-rabi?" },
+      { category: "Weather Phrases", front: "The weather in spring is very warm.", arabic: "الطقس بالربيع كتير دافي", translit: "el-ta-es b-rabi kteer dafi" },
+      { category: "Weather Phrases", front: "Tomorrow the weather is cold and rainy.", arabic: "الجو بكرا برد وممطر", translit: "el-jaw bukra bard w momter" },
+      { category: "Weather Phrases", front: "Yesterday the weather was sunny.", arabic: "الجو مبارح مشمس", translit: "el-jaw mbarah mshammes" },
+
+      // 5. Have
+      { category: "Have", front: "I have", arabic: "عندي", translit: "andi" },
+      { category: "Have", front: "you have (m)", arabic: "عندك", translit: "andak" },
+      { category: "Have", front: "you have (f)", arabic: "عندِك", translit: "andek" },
+      { category: "Have", front: "he has", arabic: "عنده", translit: "ando" },
+      { category: "Have", front: "she has", arabic: "عندها", translit: "anda" },
+      { category: "Have", front: "we have", arabic: "عندنا", translit: "andna" },
+      { category: "Have", front: "you (pl) have", arabic: "عندكن", translit: "andkon" },
+      { category: "Have", front: "they have", arabic: "عندن", translit: "andon" },
+
+      { category: "Have Q&A", front: "Do you (m) have a question?", arabic: "عندك سؤال؟", translit: "andak soal?" },
+      { category: "Have Q&A", front: "Yes, I have a question.", arabic: "إي، عندي سؤال", translit: "eh, andi soal" },
+      { category: "Have Q&A", front: "No, I don't have a question.", arabic: "لا، ما عندي سؤال", translit: "la, ma andi soal" },
+
+      // 6. Question Words
+      { category: "Questions", front: "what?", arabic: "شو", translit: "shu" },
+      { category: "Questions", front: "how?", arabic: "كيف", translit: "keef" },
+      { category: "Questions", front: "where?", arabic: "وين", translit: "ween" },
+      { category: "Questions", front: "when?", arabic: "إمتى", translit: "emta" },
+      { category: "Questions", front: "why?", arabic: "ليش", translit: "lesh" },
+      { category: "Questions", front: "who?", arabic: "مين", translit: "meen" },
+      { category: "Questions", front: "how much / how many?", arabic: "قدّيش", translit: "addeesh" },
+      { category: "Questions", front: "is there / there is?", arabic: "في؟", translit: "fi?" },
+
+      // 7. Pronouns
+      { category: "Pronouns", front: "I", arabic: "أنا", translit: "ana" },
+      { category: "Pronouns", front: "you (m)", arabic: "إنت", translit: "enta" },
+      { category: "Pronouns", front: "you (f)", arabic: "إنتِ", translit: "ente" },
+      { category: "Pronouns", front: "he", arabic: "هو", translit: "howwe" },
+      { category: "Pronouns", front: "she", arabic: "هي", translit: "heyye" },
+      { category: "Pronouns", front: "we", arabic: "نحنا", translit: "nehna" },
+      { category: "Pronouns", front: "you (pl)", arabic: "إنتو", translit: "ento" },
+      { category: "Pronouns", front: "they", arabic: "هني", translit: "henne" },
+
+      // 8. Everyday Phrases
+      { category: "Everyday", front: "How are you today? (to m)", arabic: "كيفك اليوم؟", translit: "keefak elyom?" },
+      { category: "Everyday", front: "How are you today? (to f)", arabic: "كيفك اليوم؟", translit: "keefek elyom?" },
+      { category: "Everyday", front: "I'm good (m).", arabic: "منيح", translit: "mneeh" },
+      { category: "Everyday", front: "I'm good (f).", arabic: "منيحة", translit: "mneeha" },
+      { category: "Everyday", front: "My day is good.", arabic: "يومي منيح", translit: "yomi mneeh" },
+      { category: "Everyday", front: "Just a second.", arabic: "لحظة", translit: "lahza" },
+      { category: "Everyday", front: "only / just / but", arabic: "بس", translit: "bas" },
+
+      // 9. Feelings & adjectives
+      { category: "Feelings", front: "hungry (m)", arabic: "جوعان", translit: "jouaan" },
+      { category: "Feelings", front: "hungry (f)", arabic: "جوعانة", translit: "jouaaneh" },
+      { category: "Feelings", front: "thirsty (m)", arabic: "عطشان", translit: "atshan" },
+      { category: "Feelings", front: "thirsty (f)", arabic: "عطشانة", translit: "atshaneh" },
+      { category: "Feelings", front: "tired (m)", arabic: "تعبان", translit: "taaban" },
+      { category: "Feelings", front: "tired (f)", arabic: "تعبانة", translit: "taabaneh" },
+      { category: "Feelings", front: "cold (feeling, m)", arabic: "بردان", translit: "bardan" },
+      { category: "Feelings", front: "cold (feeling, f)", arabic: "بردانة", translit: "bardaneh" },
+      { category: "Feelings", front: "hot (feeling, m)", arabic: "مشوب", translit: "mashoob" },
+      { category: "Feelings", front: "hot (feeling, f)", arabic: "مشوبة", translit: "mashoobeh" },
+      { category: "Feelings", front: "happy (m)", arabic: "مبسوط", translit: "mabsout" },
+      { category: "Feelings", front: "happy (f)", arabic: "مبسوطة", translit: "mabsouta" },
+      { category: "Feelings", front: "sad (m)", arabic: "زعلان", translit: "zaalan" },
+      { category: "Feelings", front: "sad (f)", arabic: "زعلانة", translit: "zaalaneh" },
+      { category: "Feelings", front: "sick (m)", arabic: "مريض", translit: "mareed" },
+      { category: "Feelings", front: "sick (f)", arabic: "مريضة", translit: "mareeda" },
+      { category: "Feelings", front: "I am hungry (m)", arabic: "أنا جوعان", translit: "ana jouaan" },
+      { category: "Feelings", front: "I am tired (f)", arabic: "أنا تعبانة", translit: "ana taabaneh" },
+
+      // 10. Verbs: want / like / need
+      { category: "Verbs", front: "I want", arabic: "بدي", translit: "bedde" },
+      { category: "Verbs", front: "you want (m)", arabic: "بدك", translit: "bedak" },
+      { category: "Verbs", front: "you want (f)", arabic: "بدِك", translit: "bedek" },
+      { category: "Verbs", front: "he wants", arabic: "بده", translit: "bedo" },
+      { category: "Verbs", front: "she wants", arabic: "بدها", translit: "beda" },
+      { category: "Verbs", front: "I like / I love", arabic: "بحب", translit: "behebb" },
+      { category: "Verbs", front: "I need", arabic: "لازم", translit: "lazem" },
+      { category: "Verbs", front: "I want coffee.", arabic: "بدي قهوة", translit: "bedde ahwe" },
+      { category: "Verbs", front: "I like Beirut.", arabic: "بحب بيروت", translit: "behebb Beirut" },
+
       /* DAYS OF THE WEEK */
       { category: "Days", front: "Sunday", arabic: "الأحد", translit: "el-ahad" },
       { category: "Days", front: "Monday", arabic: "الإثنين", translit: "et-tnein" },
