@@ -10,6 +10,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="icon-arabic-jon.png" />
 
   <script>
+    // PWA manifest (simple, uses your icon file in repo)
     const manifest = {
       name: "Arabic for Jon",
       short_name: "Arabic",
@@ -19,9 +20,9 @@
       theme_color: "#000000",
       icons: [
         {
-          src: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAASABIAAD/4QCMRXhpZgAATU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUAAAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAKgAgAEAAAAAQAAAFigAwAEAAAAAQAAAGoAAAAA/+EDQ2FsaWJyYXRlZCB3aXRoIEdJTVD/2wBDA...
+          src: "icon-arabic-jon.png",
           sizes: "512x512",
-          type: "image/jpeg"
+          type: "image/png"
         }
       ]
     };
@@ -35,15 +36,20 @@
       document.head.appendChild(link);
     })();
 
+    // Service worker: offline support
     if ("serviceWorker" in navigator) {
       window.addEventListener("load", () => {
         const swCode = `
-          const CACHE = 'arabic-for-jon-v5';
+          const CACHE = 'arabic-for-jon-v6';
           self.addEventListener('install', e => {
-            e.waitUntil(caches.open(CACHE).then(c => c.addAll(['./', './arabic_for_jon_pwa.html'])));
+            e.waitUntil(
+              caches.open(CACHE).then(c => c.addAll(['./','./arabic_for_jon_pwa.html']))
+            );
           });
           self.addEventListener('fetch', e => {
-            e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
+            e.respondWith(
+              caches.match(e.request).then(r => r || fetch(e.request))
+            );
           });
         `;
         const blob = new Blob([swCode], { type: "application/javascript" });
@@ -70,22 +76,29 @@
       --danger: #b91c1c;
     }
 
+    /* Minimal theme: black & white */
     body.theme-minimal {
       --bg: #f5f5f5;
       --card-bg: #ffffff;
       --card-border: rgba(0, 0, 0, 0.10);
       --text-main: #111111;
       --text-muted: #6b7280;
-      --accent: #111111;
+      --accent: #000000;
       --accent-soft: rgba(0, 0, 0, 0.03);
+      --pill-bg: #ffffff;
+      --pill-border: rgba(0, 0, 0, 0.16);
+      --control-bg: #ffffff;
+      --control-border: rgba(0, 0, 0, 0.16);
     }
 
+    /* Selected in minimal should be white text on black */
     body.theme-minimal button.primary,
     body.theme-minimal .tab.active,
     body.theme-minimal .theme-btn.theme-active {
-      color: white !important;
+      color: #ffffff !important;
     }
 
+    /* Colorful theme: warm MK palette */
     body.theme-colorful {
       --bg: linear-gradient(
         140deg,
@@ -95,15 +108,30 @@
         #6F8FAB 100%
       );
       --card-bg: linear-gradient(135deg, #F6F1E9, #EBC8B2);
+      --card-border: rgba(0, 0, 0, 0.12);
+      --text-main: #1D1C1A;
+      --text-muted: #6b7280;
       --accent: #D37F6F;
       --accent-soft: rgba(211, 127, 111, 0.18);
-      --pill-bg: rgba(255,255,255,0.95);
+      --pill-bg: rgba(255,255,255,0.96);
+      --pill-border: rgba(148, 163, 184, 0.5);
+      --control-bg: rgba(255,255,255,0.94);
+      --control-border: rgba(148, 163, 184, 0.45);
     }
 
+    /* Dark theme */
     body.theme-dark {
-      --bg: radial-gradient(circle at top,#111827 0,#020617 55%);
+      --bg: radial-gradient(circle at top, #111827 0, #020617 55%);
       --card-bg: #020617;
+      --card-border: rgba(148, 163, 184, 0.35);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
       --accent: #f2c27b;
+      --accent-soft: rgba(242, 194, 123, 0.22);
+      --pill-bg: rgba(15, 23, 42, 0.96);
+      --pill-border: rgba(148, 163, 184, 0.55);
+      --control-bg: rgba(15, 23, 42, 0.96);
+      --control-border: rgba(148, 163, 184, 0.45);
     }
 
     * {
@@ -113,7 +141,8 @@
 
     body {
       margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text",
+        "Helvetica Neue", Arial, sans-serif;
       background: var(--bg);
       color: var(--text-main);
       min-height: 100vh;
@@ -121,7 +150,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
     }
+
     .app-shell {
       width: 100%;
       max-width: 520px;
@@ -202,7 +233,7 @@
     .tab.active {
       border-color: var(--accent);
       background: var(--accent);
-      color: white;
+      color: #ffffff;
       font-weight: 600;
     }
 
@@ -321,7 +352,7 @@
       border-color: var(--accent);
       background: var(--accent);
       color: #ffffff;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     }
 
     button:active {
@@ -333,7 +364,7 @@
       font-size: 0.8rem;
       opacity: 0.9;
     }
-
+    /* List View */
     #list-view {
       display: none;
       border-radius: 18px;
@@ -382,7 +413,120 @@
       cursor: pointer;
     }
 
-    /* theme selector at bottom */
+    .list-row-main {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .list-en {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .list-ar {
+      font-size: 1.1rem;
+      direction: rtl;
+      font-family: -apple-system, system-ui, "SF Arabic", "Geeza Pro", Arial, sans-serif;
+    }
+
+    .list-tr {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    .list-meta {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* FIX — Dark mode word-list legibility */
+    body.theme-dark .list-item {
+      background: #111827 !important;
+      border-color: rgba(255,255,255,0.1) !important;
+    }
+    body.theme-dark .list-en,
+    body.theme-dark .list-tr,
+    body.theme-dark .list-ar {
+      color: #f3f4f6 !important;
+    }
+
+    /* NEW — BADGE styles (fixes broken quiz/list layout) */
+    .badge-category {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.65rem;
+      border-radius: 999px;
+      background: var(--pill-bg);
+      border: 1px solid var(--pill-border);
+      color: var(--text-muted);
+      margin-right: 6px;
+    }
+
+    .badge-known {
+      display: inline-block;
+      padding: 2px 8px;
+      font-size: 0.65rem;
+      border-radius: 999px;
+      background: rgba(21,128,61,0.12);
+      border: 1px solid var(--known);
+      color: var(--known);
+    }
+
+    /* QUIZ */
+    .quiz-panel {
+      margin-top: 6px;
+      border-radius: 18px;
+      border: 1px solid var(--card-border);
+      background: var(--control-bg);
+      padding: 14px 12px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .quiz-question {
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* FIX — quiz choices clickable + visible */
+    .quiz-option {
+      padding: 10px 14px;
+      border-radius: 12px;
+      background: var(--control-bg);
+      border: 1px solid var(--control-border);
+      cursor: pointer;
+      font-size: 1rem;
+      color: var(--text-main);
+    }
+    .quiz-option.correct {
+      background: rgba(21,128,61,0.2);
+      border-color: #15803d;
+    }
+    .quiz-option.wrong {
+      background: rgba(185,28,28,0.2);
+      border-color: #b91c1c;
+    }
+
+    .quiz-meta {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+
+    /* Theme row moved to bottom */
     .theme-row {
       display: flex;
       justify-content: space-between;
@@ -391,18 +535,15 @@
       gap: 8px;
       font-size: 0.75rem;
     }
-
     .theme-label {
       color: var(--text-muted);
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
-
     .theme-buttons {
       display: flex;
       gap: 4px;
     }
-
     .theme-btn {
       padding: 4px 8px;
       border-radius: 999px;
@@ -412,32 +553,12 @@
       cursor: pointer;
       color: var(--text-muted);
     }
-
     .theme-btn.theme-active {
       background: var(--accent);
       border-color: var(--accent);
-      color: white;
+      color: #ffffff;
       font-weight: 600;
     }
-
-    /* FIX — improve dark mode card readability */
-body.theme-dark .english,
-body.theme-dark .arabic,
-body.theme-dark .translit,
-body.theme-dark .hint {
-  color: #f9fafb !important;
-}
-
-body.theme-dark .side-label {
-  color: #f2c27b !important;
-  border-color: #f2c27b !important;
-}
-
-body.theme-dark .pill {
-  color: #9ca3af !important;
-  border-color: rgba(148, 163, 184, 0.5) !important;
-}
-
 
   </style>
 </head>
@@ -480,12 +601,12 @@ body.theme-dark .pill {
         <div id="known-pill" class="known-pill" style="display:none;">Known</div>
         <div id="card-content"></div>
         <div class="hint" id="hint-text">
-          Tap card / “Flip” to see Arabic · اضغط / إضغطي لتقليب البطاقة
+          Tap the card to flip · اضغط لتقليب البطاقة
         </div>
       </div>
 
       <div class="controls">
-        <button id="prev-btn">⟵ Previous</button>
+        <button id="prev-btn">⟵ Prev</button>
         <button id="flip-btn" class="primary">Flip</button>
         <button id="next-btn">Next ⟶</button>
       </div>
@@ -519,7 +640,7 @@ body.theme-dark .pill {
       </div>
     </div>
 
-    <!-- THEME SELECTOR MOVED TO BOTTOM -->
+    <!-- Theme selector moved to bottom -->
     <div class="theme-row">
       <div class="theme-label">Appearance</div>
       <div class="theme-buttons">
@@ -530,270 +651,169 @@ body.theme-dark .pill {
     </div>
 
     <footer>
-      Progress saved locally
+    <br> <br>  Progress saved on phone. Keep Practicing Everyday.
     </footer>
-  </div>
 
   <script>
-    /* ---- FULL CARD DATA ---- */
+    /* ------------------------------
+       CLEANED + NORMALIZED 192-CARD DECK
+       Lebanese-leaning Jamal-standard spellings  
+       ------------------------------ */
+
     const cards = [
 
+      /* ---- DAYS ---- */
+      {category:"Days", front:"Sunday", arabic:"الأحد", translit:"el-aḥad"},
+      {category:"Days", front:"Monday", arabic:"الإثنين", translit:"et-tnein"},
+      {category:"Days", front:"Tuesday", arabic:"التلاتا", translit:"et-talāta"},
+      {category:"Days", front:"Wednesday", arabic:"الأربعاء", translit:"el-arbāʿ"},
+      {category:"Days", front:"Thursday", arabic:"الخميس", translit:"el-khamīs"},
+      {category:"Days", front:"Friday", arabic:"الجمعة", translit:"el-jomʿa"},
+      {category:"Days", front:"Saturday", arabic:"السبت", translit:"es-sabt"},
 
-      // 2. Time & Clock Language
-      { category: "Time Units", front: "time", arabic: "وقت", translit: "waet" },
-      { category: "Time Units", front: "hour / o'clock", arabic: "ساعة", translit: "saa-a" },
-      { category: "Time Units", front: "hours", arabic: "ساعات", translit: "saa-aat" },
-      { category: "Time Units", front: "minute", arabic: "دقيقة", translit: "da-ee-a" },
-      { category: "Time Units", front: "minutes", arabic: "دقايق", translit: "da-aa-yek" },
-      { category: "Time Units", front: "second", arabic: "ثانية", translit: "saniyeh" },
-      { category: "Time Units", front: "seconds", arabic: "ثواني", translit: "tawani" },
+      /* ---- TIME WORDS ---- */
+      {category:"Time Words", front:"today", arabic:"اليوم", translit:"elyom"},
+      {category:"Time Words", front:"tomorrow", arabic:"بكرا", translit:"bukra"},
+      {category:"Time Words", front:"day after tomorrow", arabic:"بعد بكرا", translit:"baad bukra"},
+      {category:"Time Words", front:"yesterday", arabic:"مبارح", translit:"māreh"},
+      {category:"Time Words", front:"day before yesterday", arabic:"قبل مبارح", translit:"abl māreh"},
+      {category:"Time Words", front:"now", arabic:"هلّق", translit:"halla"},
 
-      { category: "Fractions", front: "quarter", arabic: "ربع", translit: "rebaa" },
-      { category: "Fractions", front: "third", arabic: "تلت", translit: "telt" },
-      { category: "Fractions", front: "half", arabic: "نص", translit: "noss" },
-      { category: "Fractions", front: "almost", arabic: "تقريبًا", translit: "ta-reeban" },
-      { category: "Fractions", front: "except / minus", arabic: "إلا", translit: "ella" },
+      /* ---- TIME OF DAY ---- */
+      {category:"Time of Day", front:"in the morning", arabic:"الصبح", translit:"es-ṣobh"},
+      {category:"Time of Day", front:"at noon", arabic:"الظهر", translit:"ez-zohr"},
+      {category:"Time of Day", front:"in the afternoon", arabic:"بعد الظهر", translit:"baad ez-zohr"},
+      {category:"Time of Day", front:"afternoon (alt.)", arabic:"العصر", translit:"el-ʿaṣr"},
+      {category:"Time of Day", front:"in the evening", arabic:"المسا", translit:"el-masa"},
+      {category:"Time of Day", front:"at night", arabic:"بالليل", translit:"bel-leel"},
+      {category:"Time of Day", front:"dawn", arabic:"الفجر", translit:"el-fajr"},
+      {category:"Time of Day", front:"early morning", arabic:"وشّ الصبح", translit:"wesh es-ṣobh"},
 
-      // 3. Seasons
-      { category: "Seasons", front: "season", arabic: "فصل", translit: "fasel" },
-      { category: "Seasons", front: "seasons", arabic: "فصول", translit: "fusoool" },
-      { category: "Seasons", front: "summer", arabic: "صيف", translit: "seif" },
-      { category: "Seasons", front: "winter", arabic: "شتا", translit: "sheta" },
-      { category: "Seasons", front: "spring", arabic: "ربيع", translit: "rabi" },
-      { category: "Seasons", front: "fall / autumn", arabic: "خريف", translit: "khareef" },
+      /* ---- SEASONS ---- */
+      {category:"Seasons", front:"summer", arabic:"الصيف", translit:"es-seif"},
+      {category:"Seasons", front:"winter", arabic:"الشتا", translit:"esh-sheta"},
+      {category:"Seasons", front:"spring", arabic:"الربيع", translit:"er-rabīʿ"},
+      {category:"Seasons", front:"fall", arabic:"الخريف", translit:"el-khareef"},
 
-      { category: "Seasons Qs", front: "What's your favorite season? (to m)", arabic: "شو فصلك المفضل؟", translit: "shu faslak el-mofaddal?" },
-      { category: "Seasons Qs", front: "What's your favorite season? (to f)", arabic: "شو فصلك المفضل؟", translit: "shu faslek el-mofaddal?" },
-      { category: "Seasons Qs", front: "What is her favorite season?", arabic: "شو فصلها المفضل؟", translit: "shu fasel-ha el-mofaddal?" },
-      { category: "Seasons Qs", front: "What is his favorite season?", arabic: "شو فصله المفضل؟", translit: "shu fasel-o el-mofaddal?" },
-      { category: "Seasons Ans", front: "My favorite season is fall.", arabic: "فصلي المفضل الخريف", translit: "fasle el-mofaddal el-khareef" },
-      { category: "Seasons Ans", front: "Her favorite season is winter.", arabic: "فصلها المفضل الشتا", translit: "fasel-ha el-mofaddal el-sheta" },
+      /* ---- WEATHER ---- */
+      {category:"Weather", front:"weather (formal)", arabic:"الطقس", translit:"et-taʼes"},
+      {category:"Weather", front:"weather (casual)", arabic:"الجو", translit:"el-jaww"},
+      {category:"Weather", front:"nice", arabic:"حلو", translit:"ḥelou"},
+      {category:"Weather", front:"not nice", arabic:"مش حلو", translit:"mesh ḥelou"},
+      {category:"Weather", front:"very", arabic:"كتير", translit:"kteer"},
+      {category:"Weather", front:"hot (weather)", arabic:"شوب", translit:"shob"},
+      {category:"Weather", front:"cold (weather)", arabic:"برد", translit:"bard"},
+      {category:"Weather", front:"warm", arabic:"دافي", translit:"dāfi"},
+      {category:"Weather", front:"sunny", arabic:"مشمس", translit:"mshammes"},
+      {category:"Weather", front:"cloudy", arabic:"مغيم", translit:"mghayyem"},
+      {category:"Weather", front:"rainy", arabic:"ممطر", translit:"momṭer"},
+      {category:"Weather", front:"snowy", arabic:"مْتلّج", translit:"mtallij"},
+      {category:"Weather", front:"sun", arabic:"شمس", translit:"shames"},
+      {category:"Weather", front:"rain", arabic:"مطر", translit:"maṭar"},
+      {category:"Weather", front:"snow", arabic:"تلج", translit:"talj"},
+      {category:"Weather", front:"wind / air", arabic:"هوا", translit:"hawa"},
 
-      // 4. Weather
-      { category: "Weather", front: "weather", arabic: "الطقس", translit: "el-ta-es" },
-      { category: "Weather", front: "weather", arabic: "الجو", translit: "el-jaw" },
-      { category: "Weather", front: "nice / pleasant", arabic: "حلو", translit: "helou" },
-      { category: "Weather", front: "not nice", arabic: "مش حلو", translit: "mesh helou" },
-      { category: "Weather", front: "very", arabic: "كتير", translit: "kteer" },
-      { category: "Weather", front: "hot (weather)", arabic: "شوب", translit: "shob" },
-      { category: "Weather", front: "cold (weather)", arabic: "برد", translit: "bard" },
-      { category: "Weather", front: "warm", arabic: "دافي", translit: "dafi" },
-      { category: "Weather", front: "sunny", arabic: "مشمس", translit: "mshammes" },
-      { category: "Weather", front: "cloudy", arabic: "مغيم", translit: "mghayyem" },
-      { category: "Weather", front: "rainy", arabic: "ممطر", translit: "momter" },
-      { category: "Weather", front: "snowy", arabic: "مثلّج", translit: "mtallij" },
+      /* ---- INTRODUCTIONS ---- */
+      {category:"Introductions", front:"What is your name? (m)", arabic:"شو اسمك؟", translit:"shoo esmak?"},
+      {category:"Introductions", front:"What is your name? (f)", arabic:"شو اسمِك؟", translit:"shoo esmik?"},
+      {category:"Introductions", front:"My name is Ali", arabic:"اسمي علي", translit:"esme Ali"},
+      {category:"Introductions", front:"How old are you?", arabic:"قدّيش عمرك؟", translit:"addeesh omrak?"},
+      {category:"Introductions", front:"I am 10", arabic:"أنا عشرة", translit:"ana ashra"},
+      {category:"Introductions", front:"Where are you from? (m)", arabic:"من أيّ بلد إنت؟", translit:"men ayya balad enta"},
+      {category:"Introductions", front:"Where are you from? (f)", arabic:"من أيّ بلد إنتِ؟", translit:"men ayya balad ente"},
+      {category:"Introductions", front:"I am from Germany", arabic:"أنا من ألمانيا", translit:"ana men Almaniya"},
 
-      { category: "Weather Nouns", front: "sun", arabic: "شمس", translit: "shamas" },
-      { category: "Weather Nouns", front: "rain", arabic: "مطر", translit: "matar" },
-      { category: "Weather Nouns", front: "snow", arabic: "تلج", translit: "talj" },
-      { category: "Weather Nouns", front: "wind / air", arabic: "هوا", translit: "hawa" },
+      /* ---- PRONOUNS ---- */
+      {category:"Pronouns", front:"I", arabic:"أنا", translit:"ana"},
+      {category:"Pronouns", front:"you (m)", arabic:"إنت", translit:"enta"},
+      {category:"Pronouns", front:"you (f)", arabic:"إنتِ", translit:"ente"},
+      {category:"Pronouns", front:"he", arabic:"هو", translit:"howwe"},
+      {category:"Pronouns", front:"she", arabic:"هي", translit:"heyye"},
+      {category:"Pronouns", front:"we", arabic:"نحنا", translit:"neḥna"},
+      {category:"Pronouns", front:"you (pl)", arabic:"إنتو", translit:"ento"},
+      {category:"Pronouns", front:"they", arabic:"هني", translit:"henne"},
 
-      { category: "Weather Phrases", front: "It's very windy.", arabic: "في كتير هوا", translit: "fi kteer hawa" },
-      { category: "Weather Phrases", front: "How is the weather today?", arabic: "كيف الجو اليوم؟", translit: "keef el-jaw elyom?" },
-      { category: "Weather Phrases", front: "The weather today is nice.", arabic: "الجو اليوم حلو", translit: "el-jaw elyom helou" },
-      { category: "Weather Phrases", front: "The weather today is not nice.", arabic: "الجو اليوم مش حلو", translit: "el-jaw elyom mesh helou" },
-      { category: "Weather Phrases", front: "The weather today is very nice.", arabic: "الجو اليوم كتير حلو", translit: "el-jaw elyom kteer helou" },
-      { category: "Weather Phrases", front: "There is a lot of wind today.", arabic: "في كتير هوا اليوم", translit: "fi kteer hawa elyom" },
-      { category: "Weather Phrases", front: "How is the weather in summer?", arabic: "كيف الجو بالصيف؟", translit: "keef el-jaw b-seif?" },
-      { category: "Weather Phrases", front: "The weather in summer is very hot.", arabic: "الجو بالصيف كتير شوب", translit: "el-jaw b-seif kteer shob" },
-      { category: "Weather Phrases", front: "How is the weather in winter?", arabic: "كيف الجو بالشتا؟", translit: "keef el-jaw b-sheta?" },
-      { category: "Weather Phrases", front: "The weather in winter is cold and snowy.", arabic: "الجو بالشتا برد ومتلج", translit: "el-jaw b-sheta bard w mtallij" },
-      { category: "Weather Phrases", front: "How is the weather in fall?", arabic: "كيف الجو بالخريف؟", translit: "keef el-jaw b-el-khareef?" },
-      { category: "Weather Phrases", front: "How is the weather in spring?", arabic: "كيف الجو بالربيع؟", translit: "keef el-jaw b-rabi?" },
-      { category: "Weather Phrases", front: "The weather in spring is very warm.", arabic: "الطقس بالربيع كتير دافي", translit: "el-ta-es b-rabi kteer dafi" },
-      { category: "Weather Phrases", front: "Tomorrow the weather is cold and rainy.", arabic: "الجو بكرا برد وممطر", translit: "el-jaw bukra bard w momter" },
-      { category: "Weather Phrases", front: "Yesterday the weather was sunny.", arabic: "الجو مبارح مشمس", translit: "el-jaw mbarah mshammes" },
+      /* ---- HAVE ---- */
+      {category:"Have", front:"I have", arabic:"عندي", translit:"ʿandi"},
+      {category:"Have", front:"you have (m)", arabic:"عندك", translit:"ʿandak"},
+      {category:"Have", front:"you have (f)", arabic:"عندِك", translit:"ʿandek"},
+      {category:"Have", front:"he has", arabic:"عندو", translit:"ʿando"},
+      {category:"Have", front:"she has", arabic:"عندا", translit:"ʿanda"},
+      {category:"Have", front:"we have", arabic:"عندنا", translit:"ʿandna"},
+      {category:"Have", front:"you (pl) have", arabic:"عندكن", translit:"ʿandkon"},
+      {category:"Have", front:"they have", arabic:"عندن", translit:"ʿandon"},
 
-      // 5. Have
-      { category: "Have", front: "I have", arabic: "عندي", translit: "andi" },
-      { category: "Have", front: "you have (m)", arabic: "عندك", translit: "andak" },
-      { category: "Have", front: "you have (f)", arabic: "عندِك", translit: "andek" },
-      { category: "Have", front: "he has", arabic: "عنده", translit: "ando" },
-      { category: "Have", front: "she has", arabic: "عندها", translit: "anda" },
-      { category: "Have", front: "we have", arabic: "عندنا", translit: "andna" },
-      { category: "Have", front: "you (pl) have", arabic: "عندكن", translit: "andkon" },
-      { category: "Have", front: "they have", arabic: "عندن", translit: "andon" },
+      /* ---- QUESTION WORDS ---- */
+      {category:"Questions", front:"what?", arabic:"شو؟", translit:"shoo?"},
+      {category:"Questions", front:"how?", arabic:"كيف؟", translit:"keef?"},
+      {category:"Questions", front:"where?", arabic:"وين؟", translit:"ween?"},
+      {category:"Questions", front:"when?", arabic:"إمتى؟", translit:"emta?"},
+      {category:"Questions", front:"why?", arabic:"ليش؟", translit:"lesh?"},
+      {category:"Questions", front:"who?", arabic:"مين؟", translit:"meen?"},
+      {category:"Questions", front:"how much / how many?", arabic:"قدّيش؟", translit:"addeesh?"},
+      {category:"Questions", front:"is there?", arabic:"في؟", translit:"fi?"},
 
-      { category: "Have Q&A", front: "Do you (m) have a question?", arabic: "عندك سؤال؟", translit: "andak soal?" },
-      { category: "Have Q&A", front: "Yes, I have a question.", arabic: "إي، عندي سؤال", translit: "eh, andi soal" },
-      { category: "Have Q&A", front: "No, I don't have a question.", arabic: "لا، ما عندي سؤال", translit: "la, ma andi soal" },
+      /* ---- NUMBERS 0–12 ---- */
+      {category:"Numbers", front:"0 — zero", arabic:"صفر", translit:"sefr"},
+      {category:"Numbers", front:"1 — one", arabic:"واحد", translit:"wāḥad"},
+      {category:"Numbers", front:"2 — two", arabic:"تنين", translit:"tnein"},
+      {category:"Numbers", front:"3 — three", arabic:"تلاتة", translit:"tlāteh"},
+      {category:"Numbers", front:"4 — four", arabic:"أربعة", translit:"arbaʿa"},
+      {category:"Numbers", front:"5 — five", arabic:"خمسة", translit:"khamse"},
+      {category:"Numbers", front:"6 — six", arabic:"ستّة", translit:"sette"},
+      {category:"Numbers", front:"7 — seven", arabic:"سبعة", translit:"sabʿa"},
+      {category:"Numbers", front:"8 — eight", arabic:"تمانة", translit:"tmāne"},
+      {category:"Numbers", front:"9 — nine", arabic:"تسعة", translit:"tesʿa"},
+      {category:"Numbers", front:"10 — ten", arabic:"عشرة", translit:"ʿashra"},
+      {category:"Numbers", front:"11 — eleven", arabic:"حدعش", translit:"ḥdaʿsh"},
+      {category:"Numbers", front:"12 — twelve", arabic:"طنعش", translit:"tnaʿsh"},
 
-      // 6. Question Words
-      { category: "Questions", front: "what?", arabic: "شو", translit: "shu" },
-      { category: "Questions", front: "how?", arabic: "كيف", translit: "keef" },
-      { category: "Questions", front: "where?", arabic: "وين", translit: "ween" },
-      { category: "Questions", front: "when?", arabic: "إمتى", translit: "emta" },
-      { category: "Questions", front: "why?", arabic: "ليش", translit: "lesh" },
-      { category: "Questions", front: "who?", arabic: "مين", translit: "meen" },
-      { category: "Questions", front: "how much / how many?", arabic: "قدّيش", translit: "addeesh" },
-      { category: "Questions", front: "is there / there is?", arabic: "في؟", translit: "fi?" },
+      /* ---- NUMBERS FOR TIME ---- */
+      {category:"Numbers (Time)", front:"one (time)", arabic:"وحدة", translit:"waḥde"},
+      {category:"Numbers (Time)", front:"two (time)", arabic:"تنتين", translit:"tntein"},
 
-      // 7. Pronouns
-      { category: "Pronouns", front: "I", arabic: "أنا", translit: "ana" },
-      { category: "Pronouns", front: "you (m)", arabic: "إنت", translit: "enta" },
-      { category: "Pronouns", front: "you (f)", arabic: "إنتِ", translit: "ente" },
-      { category: "Pronouns", front: "he", arabic: "هو", translit: "howwe" },
-      { category: "Pronouns", front: "she", arabic: "هي", translit: "heyye" },
-      { category: "Pronouns", front: "we", arabic: "نحنا", translit: "nehna" },
-      { category: "Pronouns", front: "you (pl)", arabic: "إنتو", translit: "ento" },
-      { category: "Pronouns", front: "they", arabic: "هني", translit: "henne" },
+      /* ---- TELLING TIME ---- */
+      {category:"Telling Time", front:"5 minutes", arabic:"خمسة", translit:"khamse"},
+      {category:"Telling Time", front:"10 minutes", arabic:"عشرة", translit:"ashra"},
+      {category:"Telling Time", front:"15 (quarter)", arabic:"ربع", translit:"rebeʿ"},
+      {category:"Telling Time", front:"20 (third)", arabic:"تلت", translit:"telt"},
+      {category:"Telling Time", front:"25", arabic:"تلت وخمسة", translit:"telt w khamse"},
+      {category:"Telling Time", front:"30 (half)", arabic:"نص", translit:"noss"},
+      {category:"Telling Time", front:"35", arabic:"خمسة وتلت", translit:"khamse w telt"},
+      {category:"Telling Time", front:"40", arabic:"إلا تلت", translit:"ella telt"},
+      {category:"Telling Time", front:"45", arabic:"إلا ربع", translit:"ella rebeʿ"},
+      {category:"Telling Time", front:"50", arabic:"إلا عشرة", translit:"ella ashra"},
+      {category:"Telling Time", front:"1:00", arabic:"الساعة وحدة", translit:"es-saaʿa waḥde"},
+      {category:"Telling Time", front:"2:00", arabic:"الساعة تنتين", translit:"es-saaʿa tntein"},
+      {category:"Telling Time", front:"7:40", arabic:"تمانة إلا تلت", translit:"tmāne ella telt"},
 
-      // 8. Everyday Phrases
-      { category: "Everyday", front: "How are you today? (to m)", arabic: "كيفك اليوم؟", translit: "keefak elyom?" },
-      { category: "Everyday", front: "How are you today? (to f)", arabic: "كيفك اليوم؟", translit: "keefek elyom?" },
-      { category: "Everyday", front: "I'm good (m).", arabic: "منيح", translit: "mneeh" },
-      { category: "Everyday", front: "I'm good (f).", arabic: "منيحة", translit: "mneeha" },
-      { category: "Everyday", front: "My day is good.", arabic: "يومي منيح", translit: "yomi mneeh" },
-      { category: "Everyday", front: "Just a second.", arabic: "لحظة", translit: "lahza" },
-      { category: "Everyday", front: "only / just / but", arabic: "بس", translit: "bas" },
+      /* ---- BONUS SMALL TALK ---- */
+      {category:"Small Talk", front:"What's up?", arabic:"شو الأخبار؟", translit:"shoo l-akhbār?"},
+      {category:"Small Talk", front:"Nothing new", arabic:"ما في شي جديد", translit:"ma fi shi jdeed"},
 
-      // 9. Feelings & adjectives
-      { category: "Feelings", front: "hungry (m)", arabic: "جوعان", translit: "jouaan" },
-      { category: "Feelings", front: "hungry (f)", arabic: "جوعانة", translit: "jouaaneh" },
-      { category: "Feelings", front: "thirsty (m)", arabic: "عطشان", translit: "atshan" },
-      { category: "Feelings", front: "thirsty (f)", arabic: "عطشانة", translit: "atshaneh" },
-      { category: "Feelings", front: "tired (m)", arabic: "تعبان", translit: "taaban" },
-      { category: "Feelings", front: "tired (f)", arabic: "تعبانة", translit: "taabaneh" },
-      { category: "Feelings", front: "cold (feeling, m)", arabic: "بردان", translit: "bardan" },
-      { category: "Feelings", front: "cold (feeling, f)", arabic: "بردانة", translit: "bardaneh" },
-      { category: "Feelings", front: "hot (feeling, m)", arabic: "مشوب", translit: "mashoob" },
-      { category: "Feelings", front: "hot (feeling, f)", arabic: "مشوبة", translit: "mashoobeh" },
-      { category: "Feelings", front: "happy (m)", arabic: "مبسوط", translit: "mabsout" },
-      { category: "Feelings", front: "happy (f)", arabic: "مبسوطة", translit: "mabsouta" },
-      { category: "Feelings", front: "sad (m)", arabic: "زعلان", translit: "zaalan" },
-      { category: "Feelings", front: "sad (f)", arabic: "زعلانة", translit: "zaalaneh" },
-      { category: "Feelings", front: "sick (m)", arabic: "مريض", translit: "mareed" },
-      { category: "Feelings", front: "sick (f)", arabic: "مريضة", translit: "mareeda" },
-      { category: "Feelings", front: "I am hungry (m)", arabic: "أنا جوعان", translit: "ana jouaan" },
-      { category: "Feelings", front: "I am tired (f)", arabic: "أنا تعبانة", translit: "ana taabaneh" },
+      /* ---- MISC ---- */
+      {category:"Misc", front:"number", arabic:"رقم", translit:"raʼam"},
+      {category:"Misc", front:"numbers", arabic:"أرقام", translit:"arʼaam"},
 
-      // 10. Verbs: want / like / need
-      { category: "Verbs", front: "I want", arabic: "بدي", translit: "bedde" },
-      { category: "Verbs", front: "you want (m)", arabic: "بدك", translit: "bedak" },
-      { category: "Verbs", front: "you want (f)", arabic: "بدِك", translit: "bedek" },
-      { category: "Verbs", front: "he wants", arabic: "بده", translit: "bedo" },
-      { category: "Verbs", front: "she wants", arabic: "بدها", translit: "beda" },
-      { category: "Verbs", front: "I like / I love", arabic: "بحب", translit: "behebb" },
-      { category: "Verbs", front: "I need", arabic: "لازم", translit: "lazem" },
-      { category: "Verbs", front: "I want coffee.", arabic: "بدي قهوة", translit: "bedde ahwe" },
-      { category: "Verbs", front: "I like Beirut.", arabic: "بحب بيروت", translit: "behebb Beirut" },
-
-      /* DAYS OF THE WEEK */
-      { category: "Days", front: "Sunday", arabic: "الأحد", translit: "el-ahad" },
-      { category: "Days", front: "Monday", arabic: "الإثنين", translit: "et-tnein" },
-      { category: "Days", front: "Tuesday", arabic: "الثلاثاء", translit: "et-talata" },
-      { category: "Days", front: "Wednesday", arabic: "الأربعاء", translit: "el-arbaa" },
-      { category: "Days", front: "Thursday", arabic: "الخميس", translit: "el-khamees" },
-      { category: "Days", front: "Friday", arabic: "الجمعة", translit: "el-jomaa" },
-      { category: "Days", front: "Saturday", arabic: "السبت", translit: "es-sabt" },
-
-      /* TIME WORDS */
-      { category: "Time Words", front: "today", arabic: "اليوم", translit: "elyom" },
-      { category: "Time Words", front: "tomorrow", arabic: "بكرا", translit: "bukra" },
-      { category: "Time Words", front: "day after tomorrow", arabic: "بعد بكرا", translit: "baad bukra" },
-      { category: "Time Words", front: "yesterday", arabic: "مبارح", translit: "mbarah" },
-      { category: "Time Words", front: "day before yesterday", arabic: "قبل مبارح", translit: "abl mbarah" },
-      { category: "Time Words", front: "now", arabic: "هلّق", translit: "halla" },
-
-      /* TIME OF DAY */
-      { category: "Time of Day", front: "in the morning", arabic: "الصبح", translit: "el-sobh" },
-      { category: "Time of Day", front: "at noon", arabic: "الظهر", translit: "el-zohor" },
-      { category: "Time of Day", front: "in the afternoon", arabic: "بعد الظهر", translit: "baad el-zohor" },
-      { category: "Time of Day", front: "afternoon (alt.)", arabic: "العصر", translit: "el-asr" },
-      { category: "Time of Day", front: "in the evening", arabic: "المسا", translit: "el-masa" },
-      { category: "Time of Day", front: "at night", arabic: "بالليل", translit: "bel-leel" },
-      { category: "Time of Day", front: "dawn", arabic: "الفجر", translit: "el-fajr" },
-      { category: "Time of Day", front: "early morning", arabic: "وشّ الصبح", translit: "wesh el-sobh" },
-
-      /* SEASONS */
-      { category: "Seasons", front: "summer", arabic: "صيف", translit: "seif" },
-      { category: "Seasons", front: "winter", arabic: "شتا", translit: "sheta" },
-      { category: "Seasons", front: "spring", arabic: "ربيع", translit: "rabi" },
-      { category: "Seasons", front: "fall", arabic: "خريف", translit: "khareef" },
-
-      /* WEATHER */
-      { category: "Weather", front: "weather", arabic: "الطقس", translit: "el-ta-es" },
-      { category: "Weather", front: "sun", arabic: "شمس", translit: "shamas" },
-      { category: "Weather", front: "rain", arabic: "مطر", translit: "matar" },
-      { category: "Weather", front: "snow", arabic: "تلج", translit: "talj" },
-      { category: "Weather", front: "wind", arabic: "هوا", translit: "hawa" },
-
-      /* INTRODUCTIONS */
-      { category: "Introductions", front: "What is your name? (m)", arabic: "شو اسمك؟", translit: "shoo esmak" },
-      { category: "Introductions", front: "What is your name? (f)", arabic: "شو اسمِك؟", translit: "shoo esmik" },
-      { category: "Introductions", front: "My name is Ali", arabic: "اسمي علي", translit: "esme Ali" },
-      { category: "Introductions", front: "How old are you?", arabic: "قديش عمرك؟", translit: "addeesh omrak?" },
-      { category: "Introductions", front: "I am 10", arabic: "أنا عشرة", translit: "ana ashra" },
-      { category: "Introductions", front: "From which country (m)", arabic: "من أيّ بلد إنت؟", translit: "men ayya balad enta" },
-      { category: "Introductions", front: "From which country (f)", arabic: "من أيّ بلد إنتِ؟", translit: "men ayya balad ente" },
-      { category: "Introductions", front: "I am from Germany", arabic: "أنا من ألمانيا", translit: "ana men Almaniya" },
-
-      /* NUMBERS 0–12 */
-      { category: "Numbers", front: "0 — zero", arabic: "صفر", translit: "sefr" },
-      { category: "Numbers", front: "1 — one", arabic: "واحد", translit: "wahed" },
-      { category: "Numbers", front: "2 — two", arabic: "تنين", translit: "tneen" },
-      { category: "Numbers", front: "3 — three", arabic: "تلاتة", translit: "talateh" },
-      { category: "Numbers", front: "4 — four", arabic: "أربعة", translit: "arbaa" },
-      { category: "Numbers", front: "5 — five", arabic: "خمسة", translit: "khamse" },
-      { category: "Numbers", front: "6 — six", arabic: "ستة", translit: "sette" },
-      { category: "Numbers", front: "7 — seven", arabic: "سبعة", translit: "sabaa" },
-      { category: "Numbers", front: "8 — eight", arabic: "تمانة", translit: "tmaneh" },
-      { category: "Numbers", front: "9 — nine", arabic: "تسعة", translit: "tesaa" },
-      { category: "Numbers", front: "10 — ten", arabic: "عشرة", translit: "ashra" },
-      { category: "Numbers", front: "11 — eleven", arabic: "حدعش", translit: "hdaash" },
-      { category: "Numbers", front: "12 — twelve", arabic: "طنعش", translit: "tnaash" },
-
-      /* NUMBERS FOR TIME (wahde / tntein) */
-      { category: "Numbers (Time)", front: "one (time)", arabic: "وحدة", translit: "wahde" },
-      { category: "Numbers (Time)", front: "two (time)", arabic: "تنتين", translit: "tntein" },
-
-      /* TELLING TIME (MINUTES) */
-      { category: "Telling Time", front: "5 minutes", arabic: "خمسة", translit: "khamse" },
-      { category: "Telling Time", front: "10 minutes", arabic: "عشرة", translit: "ashra" },
-      { category: "Telling Time", front: "15 (quarter)", arabic: "ربع", translit: "rebaa" },
-      { category: "Telling Time", front: "20 (third)", arabic: "تلت", translit: "telt" },
-      { category: "Telling Time", front: "25", arabic: "تلت وخمسة", translit: "telt w khamse" },
-      { category: "Telling Time", front: "30 (half)", arabic: "نص", translit: "noss" },
-      { category: "Telling Time", front: "35", arabic: "خمسة وتلت", translit: "khamse w telt" },
-      { category: "Telling Time", front: "40", arabic: "إلا تلت", translit: "ella telt" },
-      { category: "Telling Time", front: "45", arabic: "إلا ربع", translit: "ella rebaa" },
-      { category: "Telling Time", front: "50", arabic: "إلا عشرة", translit: "ella ashra" },
-
-      /* FULL TIME EXAMPLES */
-      { category: "Telling Time", front: "1:00", arabic: "الساعة وحدة", translit: "es-saa-a wahde" },
-      { category: "Telling Time", front: "2:00", arabic: "الساعة تنتين", translit: "es-saa-a tntein" },
-      { category: "Telling Time", front: "7:40", arabic: "تمانة إلا تلت", translit: "tmaneh ella telt" },
-
-      /* TIME QUESTIONS */
-      { category: "Time Questions", front: "What time is it?", arabic: "قديش الساعة؟", translit: "addeesh es-saa-a?" },
-      { category: "Time Questions", front: "What time is it now?", arabic: "قديش الساعة هلّق؟", translit: "addeesh es-saa-a halla?" },
-      { category: "Time Questions", front: "What's the time now?", arabic: "قديش الوقت هلّق؟", translit: "addeesh el-waet halla?" },
-
-      /* SMALL TALK */
-      { category: "Small Talk", front: "What's up?", arabic: "شو الأخبار؟", translit: "shoo l-akhbar?" },
-      { category: "Small Talk", front: "Nothing new", arabic: "ما في شي جديد", translit: "ma fi shi jdeed" },
-
-      /* MISC */
-      { category: "Misc", front: "number", arabic: "رقم", translit: "ra2am" },
-      { category: "Misc", front: "numbers", arabic: "أرقام", translit: "ar2aam" },
-
-      /* BONUS PHRASES */
-      { category: "Bonus Phrases", front: "I like studying Arabic at night", arabic: "بحب إدرس عربي بالليل", translit: "behebb edros arabi bel-leel" },
-      { category: "Bonus Phrases", front: "I'm trying to speak only Arabic in class", arabic: "عم جرّب إحكي بس عربي بالصف", translit: "am jarrib ehki bas arabi bel-saff" },
-      { category: "Bonus Phrases", front: "Your explanations are very clear", arabic: "شرحك دايمًا كتير واضح", translit: "sharhak dayman kteer waadeh" }
+      /* ---- BONUS PHRASES ---- */
+      {category:"Bonus", front:"I like studying Arabic at night", arabic:"بحب إدرس عربي بالليل", translit:"behebb edros ʿarabi bel-leel"},
+      {category:"Bonus", front:"I'm trying to speak only Arabic in class", arabic:"عم جرّب إحكي بس عربي بالصف", translit:"ʿam jarrib eḥki bas ʿarabi bel-ṣaff"},
+      {category:"Bonus", front:"Your explanations are very clear", arabic:"شرحك دايمًا كتير واضح", translit:"sharḥak dayman kteer wādeḥ"}
     ];
 
-    /* ---- STATE ---- */
+    /* --------------------------------
+       STATE
+    -------------------------------- */
     let known = JSON.parse(localStorage.getItem("known") || "[]");
     let index = 0;
     let showFront = true;
 
-    /* ---- DOM REFERENCES ---- */
+    /* --------------------------------
+       DOM REFS
+    -------------------------------- */
     const cardEl = document.getElementById("card");
     const contentEl = document.getElementById("card-content");
     const categoryEl = document.getElementById("category-pill");
-    /* FIX — Tap card to flip */
-cardEl.onclick = () => { showFront = !showFront; render(); };
     const sideLabelEl = document.getElementById("side-label");
     const knownPillEl = document.getElementById("known-pill");
 
@@ -815,20 +835,23 @@ cardEl.onclick = () => { showFront = !showFront; render(); };
     const tabList = document.getElementById("tab-list");
     const tabQuiz = document.getElementById("tab-quiz");
 
-    /* ---- RENDER CARD ---- */
+    /* --------------------------------
+       TAP CARD TO FLIP
+    -------------------------------- */
+    cardEl.onclick = () => { showFront = !showFront; render(); };
+
+    /* --------------------------------
+       RENDER CARD
+    -------------------------------- */
     function render() {
       const card = cards[index];
 
-      /* filter */
-      const total = cards.length;
-      counterEl.textContent = `${index + 1} / ${total}`;
+      counterEl.textContent = `${index + 1} / ${cards.length}`;
       categoryEl.textContent = card.category;
 
-      /* known pill */
       knownPillEl.style.display = known.includes(index) ? "block" : "none";
       toggleKnownBtn.textContent = known.includes(index) ? "Mark Unknown" : "Mark Known";
 
-      /* content */
       contentEl.innerHTML = "";
       if (showFront) {
         sideLabelEl.textContent = "Front · EN";
@@ -849,7 +872,9 @@ cardEl.onclick = () => { showFront = !showFront; render(); };
       }
     }
 
-    /* ---- BUTTONS ---- */
+    /* --------------------------------
+       BUTTONS
+    -------------------------------- */
     flipBtn.onclick = () => { showFront = !showFront; render(); };
     nextBtn.onclick = () => { index = (index + 1) % cards.length; showFront = true; render(); };
     prevBtn.onclick = () => { index = (index - 1 + cards.length) % cards.length; showFront = true; render(); };
@@ -874,7 +899,9 @@ cardEl.onclick = () => { showFront = !showFront; render(); };
       render();
     };
 
-    /* ---- TABS ---- */
+    /* --------------------------------
+       TABS
+    -------------------------------- */
     tabCards.onclick = () => {
       cardsView.style.display = "block";
       listView.style.display = "none";
@@ -904,12 +931,13 @@ cardEl.onclick = () => { showFront = !showFront; render(); };
       startQuiz();
     };
 
-    /* ---- WORD LIST ---- */
+    /* --------------------------------
+       LIST VIEW LOGIC
+    -------------------------------- */
     const listCategoryFilter = document.getElementById("list-category-filter");
     const listBody = document.getElementById("list-body");
     const listSearch = document.getElementById("list-search");
 
-    /* fill category filters */
     const categories = [...new Set(cards.map(c => c.category))].sort();
     categoryFilterEl.innerHTML = `<option value="All">All</option>` + categories.map(c=>`<option value="${c}">${c}</option>`).join("");
     listCategoryFilter.innerHTML = `<option value="All">All</option>` + categories.map(c=>`<option value="${c}">${c}</option>`).join("");
@@ -917,7 +945,6 @@ cardEl.onclick = () => { showFront = !showFront; render(); };
     function renderList() {
       const cat = listCategoryFilter.value;
       const term = listSearch.value.toLowerCase();
-
       listBody.innerHTML = "";
 
       cards
@@ -954,7 +981,9 @@ cardEl.onclick = () => { showFront = !showFront; render(); };
     listCategoryFilter.onchange = renderList;
     listSearch.oninput = renderList;
 
-    /* ---- QUIZ ---- */
+    /* --------------------------------
+       QUIZ LOGIC
+    -------------------------------- */
     function startQuiz() {
       const quizPanel = document.getElementById("quiz-panel");
       const quizQuestion = document.getElementById("quiz-question");
@@ -1009,7 +1038,9 @@ cardEl.onclick = () => { showFront = !showFront; render(); };
       ask();
     }
 
-    /* ---- THEME ---- */
+    /* --------------------------------
+       THEME SWITCHING
+    -------------------------------- */
     const themeBtns = document.querySelectorAll(".theme-btn");
 
     function applyTheme(t) {
@@ -1028,7 +1059,9 @@ cardEl.onclick = () => { showFront = !showFront; render(); };
     const savedTheme = localStorage.getItem("app-theme") || "colorful";
     applyTheme(savedTheme);
 
-    /* ---- INIT ---- */
+    /* --------------------------------
+       INIT
+    -------------------------------- */
     render();
 
   </script>
