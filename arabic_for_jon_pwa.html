@@ -411,6 +411,32 @@
       display: flex;
       justify-content: space-between;
     }
+    .quiz-controls {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 6px;
+      align-items: flex-end;
+      font-size: 0.8rem;
+    }
+    .quiz-controls > div {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .quiz-controls label {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--fg-muted);
+    }
+    .quiz-controls select {
+      background: var(--control-bg);
+      border-radius: 999px;
+      border: 1px solid var(--control-border);
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      color: var(--fg);
+    }
 
     /* Study tools */
     #study-tools-view {
@@ -602,20 +628,29 @@
     </div>
 
     <!-- QUIZ VIEW -->
-    <div id="quiz-view">
-      <div class="quiz-panel" id="quiz-panel">
-        <div class="quiz-question" id="quiz-question"></div>
-        <div class="quiz-options" id="quiz-options"></div>
-        <div class="quiz-meta">
-          <span id="quiz-progress"></span>
-          <span id="quiz-result"></span>
-        </div>
-      </div>
-      <div class="controls">
-        <button id="start-quiz-btn" class="primary small">Start</button>
-        <button id="reset-quiz-btn" class="small">Reset</button>
-      </div>
+   <div id="quiz-view">
+  <!-- NEW: Quiz category selection -->
+  <div class="quiz-controls">
+    <div>
+      <label for="quiz-category-select">Category</label>
+      <select id="quiz-category-select"></select>
     </div>
+  </div>
+
+  <div class="quiz-panel" id="quiz-panel">
+    <div class="quiz-question" id="quiz-question"></div>
+    <div class="quiz-options" id="quiz-options"></div>
+    <div class="quiz-meta">
+      <span id="quiz-progress"></span>
+      <span id="quiz-result"></span>
+    </div>
+  </div>
+  <div class="controls">
+    <button id="start-quiz-btn" class="primary small">Start</button>
+    <button id="reset-quiz-btn" class="small">Reset</button>
+  </div>
+</div>
+
 
     <!-- STUDY TOOLS -->
     <div id="study-tools-view">
@@ -904,6 +939,57 @@
       /* Slang */
       { category:"Slang / Informal", front:"chill / relax", arabic:"روّق", translit:"rawwaʼ" },
       { category:"Slang / Informal", front:"twin", arabic:"توأم", translit:"toʼam" }
+
+            /* Conjugation patterns as flashcards */
+      {
+        category: "Conjugation",
+        front: "أنا — Conjugation pattern",
+        arabic: "Verb 2:\n———\n\nVerb 1:\nب ———",
+        translit: ""
+      },
+      {
+        category: "Conjugation",
+        front: "إنتَ — Conjugation pattern",
+        arabic: "Verb 2:\nت ———\n\nVerb 1:\nبت ———",
+        translit: ""
+      },
+      {
+        category: "Conjugation",
+        front: "إنتي / إنتِ — Conjugation pattern",
+        arabic: "Verb 2:\nت ——— ي\n\nVerb 1:\nبت ——— ي",
+        translit: ""
+      },
+      {
+        category: "Conjugation",
+        front: "هو — Conjugation pattern",
+        arabic: "Verb 2:\nي ———\n\nVerb 1:\nبي ———",
+        translit: ""
+      },
+      {
+        category: "Conjugation",
+        front: "هي — Conjugation pattern",
+        arabic: "Verb 2:\nت ———\n\nVerb 1:\nبت ———",
+        translit: ""
+      },
+      {
+        category: "Conjugation",
+        front: "نحنا — Conjugation pattern",
+        arabic: "Verb 2:\nن ———\n\nVerb 1:\nمن ———",
+        translit: ""
+      },
+      {
+        category: "Conjugation",
+        front: "إنتو — Conjugation pattern",
+        arabic: "Verb 2:\nت ——— و\n\nVerb 1:\nبت ——— و",
+        translit: ""
+      },
+      {
+        category: "Conjugation",
+        front: "هنّي — Conjugation pattern",
+        arabic: "Verb 2:\nي ——— و\n\nVerb 1:\nبي ——— و",
+        translit: ""
+      }
+
     ];
 
     /* LETTER FORMS */
@@ -1014,13 +1100,22 @@
     }
 
     /* FILTERING */
-    const categories = [...new Set(cards.map(c => c.category))].sort();
+      const categories = [...new Set(cards.map(c => c.category))].sort();
+
+    // Cards + List filters
     filterCategoryEl.innerHTML =
       `<option value="All">All</option>` +
       categories.map(c => `<option value="${c}">${c}</option>`).join("");
+
     listCategoryFilter.innerHTML =
       `<option value="All">All</option>` +
       categories.map(c => `<option value="${c}">${c}</option>`).join("");
+
+    // NEW: Quiz category filter
+    quizCategorySelect.innerHTML =
+      `<option value="All">All</option>` +
+      categories.map(c => `<option value="${c}">${c}</option>`).join("");
+
 
     function getActiveIndices() {
       return filteredIndices.length
@@ -1203,15 +1298,36 @@
     let quizOrder = [];
     let quizIndex = 0;
 
-    function startQuiz() {
+        function startQuiz() {
+      const selectedCat = quizCategorySelect.value;
+
+      // Build pool of indices based on category
+      let pool = cards.map((_, i) => i);
+      if (selectedCat !== "All") {
+        pool = pool.filter(i => cards[i].category === selectedCat);
+      }
+
+      if (!pool.length) {
+        quizPanel.style.display = "flex";
+        quizQuestion.textContent = "No cards in this category yet.";
+        quizOptions.innerHTML = "";
+        quizProgress.textContent = "";
+        quizResult.textContent = "";
+        return;
+      }
+
       quizPanel.style.display = "flex";
       quizResult.textContent = "";
-      quizOrder = [...Array(cards.length).keys()];
+
+      quizOrder = [...pool];
       quizOrder.sort(() => Math.random() - 0.5);
-      quizOrder = quizOrder.slice(0, 10);
+      if (quizOrder.length > 10) {
+        quizOrder = quizOrder.slice(0, 10);
+      }
       quizIndex = 0;
       askQuestion();
     }
+
 
     function askQuestion() {
       if (quizIndex >= quizOrder.length) {
