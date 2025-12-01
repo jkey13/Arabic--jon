@@ -209,6 +209,21 @@
       padding: 4px 10px;
       font-size: 0.8rem;
     }
+    .filters-row > div {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .filters-row input {
+      background: var(--control-bg);
+      border-radius: 999px;
+      border: 1px solid var(--control-border);
+      padding: 4px 10px;
+      font-size: 0.8rem;
+      color: var(--text-main);
+      width: 100%;
+    }
 
     .tabs {
       display: flex;
@@ -643,6 +658,27 @@
       </div>
       <div class="streak" id="streak-label">🔥 0-day streak</div>
     </header>
+    
+        <!-- GLOBAL FILTERS FOR CARDS + LIST -->
+    <div class="filters-row">
+      <div>
+        <label for="filter-category">Category</label>
+        <select id="filter-category"></select>
+      </div>
+      <div>
+        <label for="filter-status">Show</label>
+        <select id="filter-status">
+          <option value="all">All</option>
+          <option value="unknown">Unknown</option>
+          <option value="known">Known</option>
+        </select>
+      </div>
+      <div style="flex:1; min-width:140px;">
+        <label for="filter-search">Search</label>
+        <input id="filter-search" placeholder="English…" />
+      </div>
+    </div>
+
 
     <!-- MAIN TABS -->
     <div class="tabs">
@@ -710,37 +746,63 @@
       </div>
 
       <!-- LETTERS (hidden on homepage) -->
-      <div id="letters-view">
+           <div id="letters-view">
         <table id="letters-table">
-          <tr><th>Letter</th><th>Form</th></tr>
-          <tr><td>ا</td><td>Alef</td></tr>
-          <tr><td>ب</td><td>Be</td></tr>
-          <tr><td>ت</td><td>Te</td></tr>
-          <tr><td>ث</td><td>Se</td></tr>
-          <tr><td>ج</td><td>Jeem</td></tr>
-          <tr><td>ح</td><td>Ḥa</td></tr>
-          <tr><td>خ</td><td>Kha</td></tr>
+          <tr>
+            <th>Letter</th>
+            <th>Name</th>
+          </tr>
+          <tr><td>ا</td><td>alef</td></tr>
+          <tr><td>ب</td><td>be</td></tr>
+          <tr><td>ت</td><td>te</td></tr>
+          <tr><td>ث</td><td>se</td></tr>
+          <tr><td>ج</td><td>jeem</td></tr>
+          <tr><td>ح</td><td>ḥa</td></tr>
+          <tr><td>خ</td><td>kha</td></tr>
+          <tr><td>د</td><td>dal</td></tr>
+          <tr><td>ذ</td><td>dhal</td></tr>
+          <tr><td>ر</td><td>ra</td></tr>
+          <tr><td>ز</td><td>zay</td></tr>
+          <tr><td>س</td><td>seen</td></tr>
+          <tr><td>ش</td><td>sheen</td></tr>
+          <tr><td>ص</td><td>ṣad</td></tr>
+          <tr><td>ض</td><td>ḍad</td></tr>
+          <tr><td>ط</td><td>ṭa</td></tr>
+          <tr><td>ظ</td><td>ẓa</td></tr>
+          <tr><td>ع</td><td>ʿayn</td></tr>
+          <tr><td>غ</td><td>ghayn</td></tr>
+          <tr><td>ف</td><td>fa</td></tr>
+          <tr><td>ق</td><td>qaf</td></tr>
+          <tr><td>ك</td><td>kaf</td></tr>
+          <tr><td>ل</td><td>lam</td></tr>
+          <tr><td>م</td><td>meem</td></tr>
+          <tr><td>ن</td><td>noon</td></tr>
+          <tr><td>ه</td><td>ha</td></tr>
+          <tr><td>و</td><td>waw</td></tr>
+          <tr><td>ي</td><td>ya</td></tr>
         </table>
       </div>
 
+
       <!-- CONJUGATION TABLE -->
-      <div id="conjugation-view" style="display:none;">
+           <div id="conjugation-view" style="display:none;">
         <table id="conjugation-table">
           <tr>
             <th>Pronoun</th>
             <th>Verb 1 Pattern</th>
             <th>Verb 2 Pattern</th>
           </tr>
-          <tr><td>أنا</td><td>بـــ</td><td>ـــ</td></tr>
-          <tr><td>إنتَ</td><td>بتـــ</td><td>تــ</td></tr>
-          <tr><td>إنتِ</td><td>بتـــي</td><td>تــي</td></tr>
-          <tr><td>هو</td><td>بيـــ</td><td>يــ</td></tr>
-          <tr><td>هي</td><td>بتـــ</td><td>تــ</td></tr>
-          <tr><td>نحنا</td><td>منـــ</td><td>نــ</td></tr>
-          <tr><td>إنتو</td><td>بتـــو</td><td>تــو</td></tr>
-          <tr><td>هنّي</td><td>بيـــو</td><td>يــو</td></tr>
+          <tr><td>أنا</td><td>ب---</td><td>---</td></tr>
+          <tr><td>إنتَ</td><td>بت---</td><td>ت---</td></tr>
+          <tr><td>إنتِ</td><td>بت--ـي</td><td>ت--ـي</td></tr>
+          <tr><td>هو</td><td>بي---</td><td>ي---</td></tr>
+          <tr><td>هي</td><td>بت---</td><td>ت---</td></tr>
+          <tr><td>نحنا</td><td>من---</td><td>ن---</td></tr>
+          <tr><td>إنتو</td><td>بت--ـو</td><td>ت--ـو</td></tr>
+          <tr><td>هنّي</td><td>بي--ـو</td><td>ي--ـو</td></tr>
         </table>
       </div>
+
 
     </div>
 
@@ -972,9 +1034,12 @@
     /* --------------------------------
        STATE
     -------------------------------- */
-    let known = JSON.parse(localStorage.getItem("known") || "[]");
-    let index = 0;
+        let known = JSON.parse(localStorage.getItem("known") || "[]");
+    let index = 0;          // index within filteredIndices
     let showFront = true;
+    let filteredIndices = []; // will hold indices of cards that match filters
+    let currentView = "cards";
+
 
     /* --------------------------------
        DOM REFS
@@ -1022,6 +1087,11 @@
     const themeBtns = document.querySelectorAll(".theme-btn");
     const streakLabel = document.getElementById("streak-label");
 
+    const filterCategoryEl = document.getElementById("filter-category");
+    const filterStatusEl = document.getElementById("filter-status");
+    const filterSearchEl = document.getElementById("filter-search");
+
+
     /* --------------------------------
        STREAK (very simple)
     -------------------------------- */
@@ -1051,13 +1121,28 @@
     /* --------------------------------
        RENDER CARD
     -------------------------------- */
-    function render() {
-      const card = cards[index];
-      counterEl.textContent = `${index + 1} / ${cards.length}`;
+       function render() {
+      const active = getActiveIndices();
+
+      if (active.length === 0) {
+        counterEl.textContent = `0 / ${cards.length}`;
+        categoryEl.textContent = "No results";
+        knownPillEl.style.display = "none";
+        contentEl.innerHTML = `<div class="english" style="font-size:1.1rem;">No cards match the filters.</div>`;
+        sideLabelEl.textContent = "Front · EN";
+        return;
+      }
+
+      if (index >= active.length) index = 0;
+      const globalIdx = active[index];
+      const card = cards[globalIdx];
+
+      counterEl.textContent = `${index + 1} / ${active.length}`;
       categoryEl.textContent = card.category;
 
-      knownPillEl.style.display = known.includes(index) ? "block" : "none";
-      toggleKnownBtn.textContent = known.includes(index) ? "Mark Unknown" : "Mark Known";
+      const isKnown = known.includes(globalIdx);
+      knownPillEl.style.display = isKnown ? "block" : "none";
+      toggleKnownBtn.textContent = isKnown ? "Mark Unknown" : "Mark Known";
 
       contentEl.innerHTML = "";
       if (showFront) {
@@ -1079,39 +1164,46 @@
       }
     }
 
+
     /* --------------------------------
        CARD INTERACTION
     -------------------------------- */
-    cardEl.onclick = () => {
-      showFront = !showFront;
+        function goNext() {
+      const active = getActiveIndices();
+      if (!active.length) return;
+      index = (index + 1) % active.length;
+      showFront = true;
       render();
-    };
+    }
+
+    function goPrev() {
+      const active = getActiveIndices();
+      if (!active.length) return;
+      index = (index - 1 + active.length) % active.length;
+      showFront = true;
+      render();
+    }
+
+    nextBtn.onclick = goNext;
+    prevBtn.onclick = goPrev;
 
     flipBtn.onclick = () => {
       showFront = !showFront;
       render();
     };
 
-    nextBtn.onclick = () => {
-      index = (index + 1) % cards.length;
-      showFront = true;
-      render();
-    };
-
-    prevBtn.onclick = () => {
-      index = (index - 1 + cards.length) % cards.length;
-      showFront = true;
-      render();
-    };
-
     toggleKnownBtn.onclick = () => {
-      if (known.includes(index)) {
-        known = known.filter(i => i !== index);
+      const active = getActiveIndices();
+      if (!active.length) return;
+      const globalIdx = active[index];
+
+      if (known.includes(globalIdx)) {
+        known = known.filter(i => i !== globalIdx);
       } else {
-        known.push(index);
+        known.push(globalIdx);
       }
       localStorage.setItem("known", JSON.stringify(known));
-      render();
+      recomputeFiltered();
     };
 
     shuffleBtn.onclick = () => {
@@ -1121,16 +1213,60 @@
       }
       index = 0;
       showFront = true;
-      render();
+      recomputeFiltered();
     };
+
 
     /* --------------------------------
        LIST VIEW
     -------------------------------- */
-    const categories = [...new Set(cards.map(c => c.category))].sort();
+       const categories = [...new Set(cards.map(c => c.category))].sort();
+
+    // Cards + List filters: same categories
+    filterCategoryEl.innerHTML =
+      `<option value="All">All</option>` +
+      categories.map(c => `<option value="${c}">${c}</option>`).join("");
+
     listCategoryFilter.innerHTML =
       `<option value="All">All</option>` +
       categories.map(c => `<option value="${c}">${c}</option>`).join("");
+
+    function getActiveIndices() {
+      if (!filteredIndices || filteredIndices.length === 0) {
+        return cards.map((_, i) => i);
+      }
+      return filteredIndices;
+    }
+
+    function recomputeFiltered() {
+      const cat = filterCategoryEl.value;
+      const status = filterStatusEl.value;
+      const term = filterSearchEl.value.trim().toLowerCase();
+
+      filteredIndices = cards
+        .map((_, i) => i)
+        .filter(i => {
+          const c = cards[i];
+          if (cat !== "All" && c.category !== cat) return false;
+          if (status === "known" && !known.includes(i)) return false;
+          if (status === "unknown" && known.includes(i)) return false;
+          if (term && !c.front.toLowerCase().includes(term)) return false;
+          return true;
+        });
+
+      const active = getActiveIndices();
+      if (active.length === 0) {
+        index = 0;
+      } else if (index >= active.length) {
+        index = 0;
+      }
+      render();
+      if (currentView === "list") renderList();
+    }
+
+    filterCategoryEl.onchange = recomputeFiltered;
+    filterStatusEl.onchange = recomputeFiltered;
+    filterSearchEl.oninput = recomputeFiltered;
 
     function renderList() {
       const cat = listCategoryFilter.value;
@@ -1158,12 +1294,24 @@
               ${known.includes(item.i) ? `<span class="badge-known">Known</span>` : ``}
             </div>
           `;
-          div.onclick = () => {
-            index = item.i;
-            showFront = true;
-            tabCards.click();
-            render();
-          };
+              cardEl.onclick = (e) => {
+      const rect = cardEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const third = rect.width / 3;
+
+      if (x < third) {
+        // left side → previous
+        goPrev();
+      } else if (x > 2 * third) {
+        // right side → next
+        goNext();
+      } else {
+        // middle → flip
+        showFront = !showFront;
+        render();
+      }
+    };
+
           listBody.appendChild(div);
         });
     }
@@ -1294,10 +1442,11 @@
     /* --------------------------------
        INIT
     -------------------------------- */
-    updateStreak();
+       updateStreak();
+    recomputeFiltered();  // builds filteredIndices + calls render()
     showView("cards");
     showSubView("letters");
-    render();
+
 
   </script>
 </body>
