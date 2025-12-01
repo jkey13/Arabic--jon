@@ -588,6 +588,31 @@
       direction: rtl;
       font-family: -apple-system, "SF Arabic", Geeza Pro, sans-serif;
     }
+.conj-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin-top: 10px;
+}
+
+.conj-table th, .conj-table td {
+  padding: 8px 6px;
+  border-bottom: 1px solid var(--card-border);
+}
+
+.conj-table th {
+  text-align: left;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
+
+.conj-table td {
+  direction: rtl;
+  font-family: -apple-system, "SF Arabic", Geeza Pro, sans-serif;
+  font-size: 1.1rem;
+}
 
     /* Study Tools sub-tabs */
     .subtabs {
@@ -785,23 +810,28 @@
 
 
       <!-- CONJUGATION TABLE -->
-           <div id="conjugation-view" style="display:none;">
-        <table id="conjugation-table">
-          <tr>
-            <th>Pronoun</th>
-            <th>Verb 1 Pattern</th>
-            <th>Verb 2 Pattern</th>
-          </tr>
-          <tr><td>أنا</td><td>ب---</td><td>---</td></tr>
-          <tr><td>إنتَ</td><td>بت---</td><td>ت---</td></tr>
-          <tr><td>إنتِ</td><td>بت--ـي</td><td>ت--ـي</td></tr>
-          <tr><td>هو</td><td>بي---</td><td>ي---</td></tr>
-          <tr><td>هي</td><td>بت---</td><td>ت---</td></tr>
-          <tr><td>نحنا</td><td>من---</td><td>ن---</td></tr>
-          <tr><td>إنتو</td><td>بت--ـو</td><td>ت--ـو</td></tr>
-          <tr><td>هنّي</td><td>بي--ـو</td><td>ي--ـو</td></tr>
-        </table>
-      </div>
+      <div id="conjugation-view" style="display:none;">
+  <table id="conjugation-table" class="conj-table">
+    <thead>
+      <tr>
+        <th>Verb 2 Pattern</th>
+        <th>Verb 1 Pattern</th>
+        <th>Pronoun</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>---</td><td>b---</td><td>أنا</td></tr>
+      <tr><td>t---</td><td>bt---</td><td>إنتَ</td></tr>
+      <tr><td>t--i</td><td>bt--i</td><td>إنتِ</td></tr>
+      <tr><td>y---</td><td>by---</td><td>هو</td></tr>
+      <tr><td>t---</td><td>bt---</td><td>هي</td></tr>
+      <tr><td>n---</td><td>mn---</td><td>نحنا</td></tr>
+      <tr><td>t--o</td><td>bt--o</td><td>إنتو</td></tr>
+      <tr><td>y--o</td><td>by--o</td><td>هنّي</td></tr>
+    </tbody>
+  </table>
+</div>
+
 
 
     </div>
@@ -1318,6 +1348,35 @@
 
     listCategoryFilter.onchange = renderList;
     listSearch.oninput = renderList;
+
+    function renderLettersTable() {
+  lettersTableEl.innerHTML = `
+    <thead>
+      <tr>
+        <th>Letter</th>
+        <th>Isolated</th>
+        <th>Initial</th>
+        <th>Medial</th>
+        <th>Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${letters.map(l => {
+        const forms = l.printed.split(" ");
+        return `
+          <tr>
+            <td class="letters-arabic">${l.letter}</td>
+            <td class="letters-printed">${forms[0] || ""}</td>
+            <td class="letters-printed">${forms[1] || ""}</td>
+            <td class="letters-printed">${forms[2] || ""}</td>
+            <td class="letters-printed">${forms[3] || ""}</td>
+          </tr>
+        `;
+      }).join("")}
+    </tbody>
+  `;
+}
+
 
     /* --------------------------------
        QUIZ
