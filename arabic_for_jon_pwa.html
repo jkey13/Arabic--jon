@@ -771,42 +771,10 @@
       </div>
 
       <!-- LETTERS (hidden on homepage) -->
-           <div id="letters-view">
-        <table id="letters-table">
-          <tr>
-            <th>Letter</th>
-            <th>Name</th>
-          </tr>
-          <tr><td>ا</td><td>alef</td></tr>
-          <tr><td>ب</td><td>be</td></tr>
-          <tr><td>ت</td><td>te</td></tr>
-          <tr><td>ث</td><td>se</td></tr>
-          <tr><td>ج</td><td>jeem</td></tr>
-          <tr><td>ح</td><td>ḥa</td></tr>
-          <tr><td>خ</td><td>kha</td></tr>
-          <tr><td>د</td><td>dal</td></tr>
-          <tr><td>ذ</td><td>dhal</td></tr>
-          <tr><td>ر</td><td>ra</td></tr>
-          <tr><td>ز</td><td>zay</td></tr>
-          <tr><td>س</td><td>seen</td></tr>
-          <tr><td>ش</td><td>sheen</td></tr>
-          <tr><td>ص</td><td>ṣad</td></tr>
-          <tr><td>ض</td><td>ḍad</td></tr>
-          <tr><td>ط</td><td>ṭa</td></tr>
-          <tr><td>ظ</td><td>ẓa</td></tr>
-          <tr><td>ع</td><td>ʿayn</td></tr>
-          <tr><td>غ</td><td>ghayn</td></tr>
-          <tr><td>ف</td><td>fa</td></tr>
-          <tr><td>ق</td><td>qaf</td></tr>
-          <tr><td>ك</td><td>kaf</td></tr>
-          <tr><td>ل</td><td>lam</td></tr>
-          <tr><td>م</td><td>meem</td></tr>
-          <tr><td>ن</td><td>noon</td></tr>
-          <tr><td>ه</td><td>ha</td></tr>
-          <tr><td>و</td><td>waw</td></tr>
-          <tr><td>ي</td><td>ya</td></tr>
-        </table>
-      </div>
+          <div id="letters-view">
+  <table id="letters-table"></table>
+</div>
+
 
 
       <!-- CONJUGATION TABLE -->
@@ -856,6 +824,36 @@
        (Core deck + Family + Verbs + Slang)
        ------------------------------ */
     const cards = [
+
+    function renderLettersTable() {
+  lettersTableEl.innerHTML = `
+    <thead>
+      <tr>
+        <th>Letter</th>
+        <th>Isolated</th>
+        <th>Initial</th>
+        <th>Medial</th>
+        <th>Final</th>
+      </tr>
+    </thead>
+    <tbody>
+      ${letters.map(l => {
+        const forms = l.printed.split(" ");
+        return `
+          <tr>
+            <td class="letters-arabic">${l.letter}</td>
+            <td class="letters-printed">${forms[0]}</td>
+            <td class="letters-printed">${forms[1]}</td>
+            <td class="letters-printed">${forms[2]}</td>
+            <td class="letters-printed">${forms[3]}</td>
+          </tr>
+        `;
+      }).join("")}
+    </tbody>
+  `;
+}
+
+
       /* DAYS */
       { category:"Days", front:"Sunday", arabic:"الأحد", translit:"el-aḥad" },
       { category:"Days", front:"Monday", arabic:"الإثنين", translit:"et-tnein" },
@@ -1501,10 +1499,12 @@
     /* --------------------------------
        INIT
     -------------------------------- */
-       updateStreak();
-    recomputeFiltered();  // builds filteredIndices + calls render()
-    showView("cards");
-    showSubView("letters");
+     updateStreak();
+recomputeFiltered();
+showView("cards");
+showSubView("letters");
+renderLettersTable();
+
 
 
   </script>
